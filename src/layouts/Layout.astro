@@ -1,3 +1,9 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import FooterSection from "../components/FooterSection.astro";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,10 +12,20 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta
+			name="description"
+			content="Cava Zaragoza - Vinos Artesanales del Valle de Guadalupe"
+		/>
+		<title>Cava Zaragoza - Vinos Artesanales del Valle de Guadalupe</title>
 	</head>
-	<body>
-		<slot />
+	<body
+		class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-body selection:bg-primary selection:text-white"
+	>
+		<Navbar />
+		<main>
+			<slot />
+		</main>
+		<FooterSection />
 	</body>
 </html>
 

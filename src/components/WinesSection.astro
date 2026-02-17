@@ -1,0 +1,185 @@
+---
+import "../styles/global.css";
+import { Image } from "astro:assets";
+import yocelinRose from "../assets/yocelin_rose.webp";
+import malbec from "../assets/malbec.webp";
+import erickDaniel from "../assets/erick_daniel.webp";
+---
+
+<section
+    class="bg-background-light dark:bg-background-dark py-20 lg:py-32"
+    id="vinos"
+>
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2
+                class="font-serif text-4xl lg:text-5xl text-background-dark dark:text-white font-bold mb-4"
+            >
+                Nuestros Vinos Exclusivos
+            </h2>
+            <div class="w-24 h-1 bg-primary mx-auto"></div>
+            <p
+                class="mt-6 text-lg text-background-dark/70 dark:text-white/70 max-w-2xl mx-auto"
+            >
+                Una selección curada que representa lo mejor de nuestra cosecha.
+                Ediciones limitadas y reservas especiales.
+            </p>
+        </div>
+        <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+        >
+            <!-- Wine Card 1 -->
+            <div
+                class="group bg-white dark:bg-[#2A181E] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gold/30"
+            >
+                <div
+                    class="aspect-[3/4] overflow-hidden relative bg-[#F5F5F7] dark:bg-[#1a0e11] flex items-center justify-center p-8"
+                >
+                    <Image
+                        src={erickDaniel}
+                        alt="Botella Syrah/Grenache, Don Flavio vinos"
+                        width={314}
+                        height={471}
+                        class="bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105 rounded-md"
+                    />
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                    >
+                        <button
+                            class="bg-white text-background-dark px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                        >
+                            Ver Detalles
+                        </button>
+                    </div>
+                </div>
+                <div class="p-8 text-center">
+                    <h3
+                        class="font-serif text-2xl font-bold text-background-dark dark:text-white mb-2"
+                    >
+                        Syrah/Grenache
+                    </h3>
+                    <p
+                        class="text-gold text-sm font-medium uppercase tracking-widest mb-4"
+                    >
+                        Erick Daniel
+                    </p>
+                    <div
+                        class="h-px w-10 bg-gray-200 dark:bg-white/10 mx-auto mb-4"
+                    >
+                    </div>
+                    <p
+                        class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
+                    >
+                        Aromas intensos a frutas rojas y negras maduras
+                        combinados con notas especiadas.
+                    </p>
+                </div>
+            </div>
+            <!-- Wine Card 2 -->
+            <div
+                class="group bg-white dark:bg-[#2A181E] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gold/30"
+            >
+                <div
+                    class="aspect-[3/4] overflow-hidden relative bg-[#F5F5F7] dark:bg-[#1a0e11] flex items-center justify-center p-8"
+                >
+                    <Image
+                        src={malbec}
+                        alt="Botella Malbec, Don Flavio vinos"
+                        width={314}
+                        height={471}
+                        class="bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105 rounded-md"
+                    />
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                    >
+                        <button
+                            class="bg-white text-background-dark px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                        >
+                            Ver Detalles
+                        </button>
+                    </div>
+                </div>
+                <div class="p-8 text-center">
+                    <h3
+                        class="font-serif text-2xl font-bold text-background-dark dark:text-white mb-2"
+                    >
+                        Malbec
+                    </h3>
+                    <p
+                        class="text-gold text-sm font-medium uppercase tracking-widest mb-4"
+                    >
+                        Don Flavio Vinos
+                    </p>
+                    <div
+                        class="h-px w-10 bg-gray-200 dark:bg-white/10 mx-auto mb-4"
+                    >
+                    </div>
+                    <p
+                        class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
+                    >
+                        Color púrpura intenso, cuerpo medio-alto y taninos
+                        suaves y dulces
+                    </p>
+                </div>
+            </div>
+            <!-- Wine Card 3 -->
+            <div
+                class="group bg-white dark:bg-[#2A181E] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gold/30"
+            >
+                <div
+                    class="aspect-[3/4] overflow-hidden relative bg-[#F5F5F7] dark:bg-[#1a0e11] flex items-center justify-center p-8"
+                >
+                    <Image
+                        src={yocelinRose}
+                        alt="Yocelin Rose, Grenache Noir"
+                        fetchpriority="high"
+                        width={314}
+                        height={471}
+                        class="bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105 rounded-md"
+                    />
+                    <div
+                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                    >
+                        <button
+                            class="bg-white text-background-dark px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
+                        >
+                            Ver Detalles
+                        </button>
+                    </div>
+                </div>
+                <div class="p-8 text-center relative">
+                    <h3
+                        class="font-serif text-2xl font-bold text-background-dark dark:text-white mb-2"
+                    >
+                        Grenache Noir
+                    </h3>
+                    <p
+                        class="text-gold text-sm font-medium uppercase tracking-widest mb-4"
+                    >
+                        Yocelin Rose
+                    </p>
+                    <div
+                        class="h-px w-10 bg-gray-200 dark:bg-white/10 mx-auto mb-4"
+                    >
+                    </div>
+                    <p
+                        class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
+                    >
+                        Limpio brillante de tonalidad cuarzo, rosado con
+                        destellos rosa cobrizo.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <button
+                class="inline-flex items-center gap-2 text-background-dark dark:text-white border-b-2 border-primary pb-1 hover:text-primary transition-colors font-bold uppercase tracking-widest text-sm"
+            >
+                Ver Catálogo Completo
+                <span class="material-symbols-outlined text-sm"
+                    >arrow_forward</span
+                >
+            </button>
+        </div>
+    </div>
+</section>
