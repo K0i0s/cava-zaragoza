@@ -1,57 +1,186 @@
 ---
-import "../styles/global.css";
 import { Image } from "astro:assets";
-import cavaLogo from "../assets/cava-logo.png";
+import logo from "../assets/images/cava-logo.webp";
 ---
 
-<!-- Top Navigation -->
-<nav
-    class="sticky top-0 z-50 w-full border-b border-[#45262f]/30 bg-background-dark/95 backdrop-blur-sm"
+<header
+    id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    role="banner"
 >
-    <div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
+    <nav
+        class="max-w-7xl mx-auto px-6 lg:px-8"
+        aria-label="Navegación principal"
+    >
         <div class="flex items-center justify-between h-20">
-            <div class="flex items-center gap-3 text-white">
-                <a href="#">
-                    <Image
-                        src={cavaLogo}
-                        alt="Cava Zaragoza Logo"
-                        width={300}
-                        height={300}
-                        class="w-32 h-auto"
-                    />
-                </a>
-            </div>
-            <div class="hidden md:flex flex-1 justify-end items-center gap-8">
-                <div class="flex items-center gap-8">
-                    <a
-                        class="text-white/80 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest"
-                        href="#historia">Historia</a
-                    >
-                    <a
-                        class="text-white/80 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest"
-                        href="#vinos">Vinos</a
-                    >
-                    <a
-                        class="text-white/80 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest"
-                        href="#premios">Premios</a
-                    >
-                    <a
-                        class="text-white/80 hover:text-gold transition-colors text-sm font-medium uppercase tracking-widest"
-                        href="#visitanos">Visítanos</a
-                    >
-                </div>
-                <button
-                    class="bg-primary hover:bg-primary-dark transition-colors text-white px-6 py-2.5 rounded-lg text-sm font-bold uppercase tracking-wide shadow-lg shadow-primary/20"
-                >
-                    Comprar
-                </button>
-            </div>
-            <!-- Mobile menu button -->
-            <div class="md:hidden flex items-center">
-                <button class="text-white p-2">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-            </div>
+            <!-- Logo -->
+            <a
+                href="#inicio"
+                class="flex items-center gap-3 group"
+                aria-label="Cava Zaragoza - Inicio"
+            >
+                <Image
+                    src={logo}
+                    alt="Cava Zaragoza"
+                    width={128}
+                    height={128}
+                    class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    fetchpriority="high"
+                    loading="eager"
+                />
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
+                {
+                    [
+                        { href: "#historia", label: "Historia" },
+                        { href: "#vinos", label: "Nuestros Vinos" },
+                        { href: "#reconocimientos", label: "Reconocimientos" },
+                        { href: "#terruno", label: "El Valle" },
+                        { href: "#contacto", label: "Contacto" },
+                    ].map((link) => (
+                        <li>
+                            <a
+                                href={link.href}
+                                class="relative text-sm font-medium tracking-widest uppercase text-cream/80 hover:text-gold-light transition-colors duration-300 after:absolute after:bottom-[-4px] after:left-0 after:h-px after:w-0 after:bg-gold after:transition-all after:duration-300 hover:after:w-full"
+                                style="font-family: var(--font-family-body); font-size: 0.7rem; letter-spacing: 0.15em;"
+                            >
+                                {link.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+
+            <!-- CTA Button desktop -->
+            <a
+                href="#contacto"
+                class="hidden md:inline-flex btn-primary text-xs"
+                aria-label="Agenda tu visita a la cava"
+            >
+                Agenda tu Visita
+            </a>
+
+            <!-- Mobile hamburger -->
+            <button
+                id="menu-toggle"
+                class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer bg-transparent border-0"
+                aria-label="Abrir menú de navegación"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+                <span
+                    class="hamburger-line block w-6 h-0.5 bg-cream transition-all duration-300"
+                ></span>
+                <span
+                    class="hamburger-line block w-6 h-0.5 bg-cream transition-all duration-300"
+                ></span>
+                <span
+                    class="hamburger-line block w-4 h-0.5 bg-cream transition-all duration-300"
+                ></span>
+            </button>
         </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+        id="mobile-menu"
+        class="md:hidden hidden overflow-hidden transition-all duration-500"
+        style="background: rgba(18, 10, 12, 0.98); backdrop-filter: blur(20px);"
+        role="dialog"
+        aria-label="Menú móvil"
+    >
+        <ul class="flex flex-col py-6 px-6 gap-1 list-none m-0 p-0">
+            {
+                [
+                    { href: "#historia", label: "Historia" },
+                    { href: "#vinos", label: "Nuestros Vinos" },
+                    { href: "#reconocimientos", label: "Reconocimientos" },
+                    { href: "#terruno", label: "El Valle" },
+                    { href: "#contacto", label: "Contacto" },
+                ].map((link) => (
+                    <li class="border-b border-white/10 last:border-0">
+                        <a
+                            href={link.href}
+                            class="mobile-link block py-4 text-sm font-medium tracking-widest uppercase text-cream/80 hover:text-gold-light transition-colors duration-200"
+                            style="font-family: var(--font-family-body); letter-spacing: 0.15em; font-size: 0.75rem;"
+                        >
+                            {link.label}
+                        </a>
+                    </li>
+                ))
+            }
+            <li class="pt-4">
+                <a
+                    href="#contacto"
+                    class="mobile-link btn-primary w-full justify-center text-xs"
+                >
+                    Agenda tu Visita
+                </a>
+            </li>
+        </ul>
     </div>
-</nav>
+</header>
+
+<style>
+    #navbar.scrolled {
+        background: rgba(18, 10, 12, 0.92);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    #navbar:not(.scrolled) {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+    }
+
+    #menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+    #menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+        width: 1.5rem;
+        transform: translateY(-8px) rotate(-45deg);
+    }
+</style>
+
+<script>
+    // Sticky nav scroll behavior
+    const navbar = document.getElementById("navbar");
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    window.addEventListener(
+        "scroll",
+        () => {
+            if (window.scrollY > 60) {
+                navbar?.classList.add("scrolled");
+            } else {
+                navbar?.classList.remove("scrolled");
+            }
+        },
+        { passive: true },
+    );
+
+    // Mobile menu toggle
+    menuToggle?.addEventListener("click", () => {
+        const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!isOpen));
+        if (isOpen) {
+            mobileMenu?.classList.add("hidden");
+        } else {
+            mobileMenu?.classList.remove("hidden");
+        }
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll(".mobile-link").forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu?.classList.add("hidden");
+            menuToggle?.setAttribute("aria-expanded", "false");
+        });
+    });
+</script>

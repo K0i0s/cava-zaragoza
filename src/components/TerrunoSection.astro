@@ -1,0 +1,118 @@
+---
+
+---
+
+<section
+    id="terruno"
+    class="py-24 lg:py-36 relative overflow-hidden"
+    style="background: var(--color-dark-bg);"
+>
+    <!-- Decorative background -->
+    <div class="absolute inset-0 pointer-events-none">
+        <div
+            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(61,79,47,0.08) 0%, transparent 50%, rgba(139,21,56,0.08) 100%);"
+        >
+        </div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-20 reveal">
+            <p class="section-label mb-4">Terruño & Origen</p>
+            <span class="gold-divider"></span>
+            <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-4"
+                style="font-family: var(--font-family-display);"
+            >
+                El Valle de Guadalupe
+            </h2>
+            <p
+                class="mt-4 text-cream/60 max-w-2xl mx-auto text-base"
+                style="font-family: var(--font-family-body); font-weight: 300;"
+            >
+                México tiene su propia Napa Valley. Una tierra única donde el
+                Mediterráneo se fusiona con el Pacífico para crear vinos de
+                carácter inigualable.
+            </p>
+        </div>
+
+        <!-- 3 Feature Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {
+                [
+                    {
+                        icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="16" cy="16" r="12"/>
+            <path d="M16 4C16 4 10 10 10 16s6 12 6 12 6-6 6-12-6-12-6-12z"/>
+            <path d="M4 16h24"/>
+          </svg>`,
+                        title: "Terruño Único",
+                        body: "El Valle de Guadalupe, en la Península de Baja California, posee un microclima mediterráneo excepcional: veranos secos, inviernos suaves y la influencia moderadora del Océano Pacífico.",
+                    },
+                    {
+                        icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M16 2l2 8h8l-6.5 5 2.5 8L16 18l-6 5 2.5-8L6 10h8l2-8z"/>
+          </svg>`,
+                        title: "Producción Artesanal",
+                        body: "Cada lote es elaborado a mano, con atención meticulosa en cada etapa. La baja producción garantiza que cada botella reciba el cuidado y la pasión que merece.",
+                    },
+                    {
+                        icon: `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M6 28V10l10-8 10 8v18"/>
+            <rect x="11" y="18" width="10" height="10"/>
+            <path d="M16 4v6"/>
+          </svg>`,
+                        title: "Hecho en Casa",
+                        body: "La cava está construida en el patio del hogar del fundador, dentro del mismo pueblo. Un espacio íntimo donde la tradición familiar y la pasión vinícola convergen en armonía.",
+                    },
+                ].map((feature, i) => (
+                    <div
+                        class={`reveal reveal-delay-${i + 1} flex flex-col items-center text-center p-8 rounded-sm`}
+                        style="background: rgba(245,245,220,0.02); border: 1px solid rgba(212,175,55,0.12);"
+                    >
+                        <div
+                            class="flex items-center justify-center w-16 h-16 rounded-full mb-6"
+                            style={`background: rgba(212,175,55,0.1); color: var(--color-gold); border: 1px solid rgba(212,175,55,0.25);`}
+                            set:html={feature.icon}
+                        />
+                        <h3
+                            class="text-xl font-bold text-cream mb-4"
+                            style="font-family: var(--font-family-display);"
+                        >
+                            {feature.title}
+                        </h3>
+                        <p
+                            class="text-cream/60 text-sm leading-relaxed"
+                            style="font-family: var(--font-family-body); font-weight: 300;"
+                        >
+                            {feature.body}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Bottom Banner -->
+        <div
+            class="reveal reveal-delay-2 text-center py-12 px-8 rounded-sm"
+            style="background: linear-gradient(135deg, rgba(139,21,56,0.15), rgba(61,79,47,0.1)); border: 1px solid rgba(212,175,55,0.2);"
+        >
+            <p class="text-xs section-label mb-4">Nuestro Compromiso</p>
+            <h3
+                class="text-2xl md:text-3xl font-bold text-cream mb-4"
+                style="font-family: var(--font-family-display);"
+            >
+                Calidad Sobre Cantidad
+            </h3>
+            <p
+                class="text-cream/70 max-w-2xl mx-auto text-base"
+                style="font-family: var(--font-family-body); font-weight: 300;"
+            >
+                En Cava Zaragoza no buscamos producir más, buscamos producir
+                mejor. Cada vino es el reflejo de una stagione, un terroir y una
+                visión: llevar lo mejor de Baja California a quienes
+                verdaderamente aprecian el vino artesanal.
+            </p>
+        </div>
+    </div>
+</section>

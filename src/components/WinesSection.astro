@@ -1,185 +1,140 @@
 ---
-import "../styles/global.css";
-import { Image } from "astro:assets";
-import yocelinRose from "../assets/yocelin_rose.webp";
-import malbec from "../assets/malbec.webp";
-import erickDaniel from "../assets/erick_daniel.webp";
+import { Image } from 'astro:assets';
+import { wines } from '../lib/wines';
+import malbecImg from '../assets/images/malbec.webp';
+import cabernetImg from '../assets/images/cavernet_sauvignon_grenache.webp';
+import sauvignonImg from '../assets/images/sauvignon-blanc-chardonnay.webp';
+import tempranilloImg from '../assets/images/tempranillo.webp';
+import rosadoImg from '../assets/images/yocelin_rose.webp';
+
+const imageMap: Record<string, ImageMetadata> = {
+  '/images/malbec.webp': malbecImg,
+  '/images/cavernet_sauvignon_grenache.webp': cabernetImg,
+  '/images/sauvignon-blanc-chardonnay.webp': sauvignonImg,
+  '/images/tempranillo.webp': tempranilloImg,
+  '/images/yocelin_rose.webp': rosadoImg,
+};
+
+const badgeStyles: Record<string, string> = {
+  gold: 'color: var(--color-charcoal); background-color: var(--color-gold);',
+  burgundy: 'color: var(--color-gold-pale); background-color: var(--color-burgundy);',
+  olive: 'color: var(--color-cream); background-color: var(--color-olive);',
+};
 ---
 
-<section
-    class="bg-background-light dark:bg-background-dark py-20 lg:py-32"
-    id="vinos"
->
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2
-                class="font-serif text-4xl lg:text-5xl text-background-dark dark:text-white font-bold mb-4"
-            >
-                Nuestros Vinos Exclusivos
-            </h2>
-            <div class="w-24 h-1 bg-primary mx-auto"></div>
-            <p
-                class="mt-6 text-lg text-background-dark/70 dark:text-white/70 max-w-2xl mx-auto"
-            >
-                Una selección curada que representa lo mejor de nuestra cosecha.
-                Ediciones limitadas y reservas especiales.
-            </p>
-        </div>
-        <div
-            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
-        >
-            <!-- Wine Card 1 -->
-            <div
-                class="group bg-white dark:bg-[#2A181E] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gold/30"
-            >
-                <div
-                    class="aspect-[3/4] overflow-hidden relative bg-[#F5F5F7] dark:bg-[#1a0e11] flex items-center justify-center p-8"
-                >
-                    <Image
-                        src={erickDaniel}
-                        alt="Botella Syrah/Grenache, Don Flavio vinos"
-                        width={314}
-                        height={471}
-                        class="bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105 rounded-md"
-                    />
-                    <div
-                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    >
-                        <button
-                            class="bg-white text-background-dark px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                        >
-                            Ver Detalles
-                        </button>
-                    </div>
-                </div>
-                <div class="p-8 text-center">
-                    <h3
-                        class="font-serif text-2xl font-bold text-background-dark dark:text-white mb-2"
-                    >
-                        Syrah/Grenache
-                    </h3>
-                    <p
-                        class="text-gold text-sm font-medium uppercase tracking-widest mb-4"
-                    >
-                        Erick Daniel
-                    </p>
-                    <div
-                        class="h-px w-10 bg-gray-200 dark:bg-white/10 mx-auto mb-4"
-                    >
-                    </div>
-                    <p
-                        class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
-                    >
-                        Aromas intensos a frutas rojas y negras maduras
-                        combinados con notas especiadas.
-                    </p>
-                </div>
-            </div>
-            <!-- Wine Card 2 -->
-            <div
-                class="group bg-white dark:bg-[#2A181E] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gold/30"
-            >
-                <div
-                    class="aspect-[3/4] overflow-hidden relative bg-[#F5F5F7] dark:bg-[#1a0e11] flex items-center justify-center p-8"
-                >
-                    <Image
-                        src={malbec}
-                        alt="Botella Malbec, Don Flavio vinos"
-                        width={314}
-                        height={471}
-                        class="bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105 rounded-md"
-                    />
-                    <div
-                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    >
-                        <button
-                            class="bg-white text-background-dark px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                        >
-                            Ver Detalles
-                        </button>
-                    </div>
-                </div>
-                <div class="p-8 text-center">
-                    <h3
-                        class="font-serif text-2xl font-bold text-background-dark dark:text-white mb-2"
-                    >
-                        Malbec
-                    </h3>
-                    <p
-                        class="text-gold text-sm font-medium uppercase tracking-widest mb-4"
-                    >
-                        Don Flavio Vinos
-                    </p>
-                    <div
-                        class="h-px w-10 bg-gray-200 dark:bg-white/10 mx-auto mb-4"
-                    >
-                    </div>
-                    <p
-                        class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
-                    >
-                        Color púrpura intenso, cuerpo medio-alto y taninos
-                        suaves y dulces
-                    </p>
-                </div>
-            </div>
-            <!-- Wine Card 3 -->
-            <div
-                class="group bg-white dark:bg-[#2A181E] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gold/30"
-            >
-                <div
-                    class="aspect-[3/4] overflow-hidden relative bg-[#F5F5F7] dark:bg-[#1a0e11] flex items-center justify-center p-8"
-                >
-                    <Image
-                        src={yocelinRose}
-                        alt="Yocelin Rose, Grenache Noir"
-                        fetchpriority="high"
-                        width={314}
-                        height={471}
-                        class="bg-contain bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105 rounded-md"
-                    />
-                    <div
-                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                    >
-                        <button
-                            class="bg-white text-background-dark px-6 py-3 rounded-full font-bold text-sm uppercase tracking-wider transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300"
-                        >
-                            Ver Detalles
-                        </button>
-                    </div>
-                </div>
-                <div class="p-8 text-center relative">
-                    <h3
-                        class="font-serif text-2xl font-bold text-background-dark dark:text-white mb-2"
-                    >
-                        Grenache Noir
-                    </h3>
-                    <p
-                        class="text-gold text-sm font-medium uppercase tracking-widest mb-4"
-                    >
-                        Yocelin Rose
-                    </p>
-                    <div
-                        class="h-px w-10 bg-gray-200 dark:bg-white/10 mx-auto mb-4"
-                    >
-                    </div>
-                    <p
-                        class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-6"
-                    >
-                        Limpio brillante de tonalidad cuarzo, rosado con
-                        destellos rosa cobrizo.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="text-center mt-12">
-            <button
-                class="inline-flex items-center gap-2 text-background-dark dark:text-white border-b-2 border-primary pb-1 hover:text-primary transition-colors font-bold uppercase tracking-widest text-sm"
-            >
-                Ver Catálogo Completo
-                <span class="material-symbols-outlined text-sm"
-                    >arrow_forward</span
-                >
-            </button>
-        </div>
+<section id="vinos" class="py-24 lg:py-36 relative" style="background: linear-gradient(to bottom, var(--color-dark-bg), var(--color-dark-card) 40%, var(--color-dark-bg) 100%);">
+  <!-- Background glow -->
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 60% 40% at 50% 50%, rgba(139,21,56,0.08), transparent);"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center mb-20 reveal">
+      <p class="section-label mb-4">Nuestra Selección</p>
+      <span class="gold-divider"></span>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-4" style="font-family: var(--font-family-display);">
+        Nuestros Vinos
+      </h2>
+      <p class="mt-4 text-cream/60 max-w-xl mx-auto text-base" style="font-family: var(--font-family-body); font-weight: 300;">
+        Cada botella, una historia. Cada sorbo, el terruño del Valle.
+      </p>
     </div>
+
+    <!-- Wine Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+      {wines.map((wine, i) => {
+        const img = imageMap[wine.image];
+        const delay = (i % 3) * 0.15;
+        return (
+          <article
+            class={`wine-card reveal reveal-delay-${(i % 3) + 1} group relative rounded-sm overflow-hidden flex flex-col`}
+            style={`background: linear-gradient(145deg, rgba(30,16,20,0.95), rgba(18,10,12,0.98)); border: 1px solid rgba(212,175,55,0.12); transition-delay: ${delay}s;`}
+            aria-label={wine.name}
+          >
+            <!-- Image container -->
+            <div class="relative overflow-hidden" style="height: 280px;">
+              {img && (
+                <Image
+                  src={img}
+                  alt={wine.imageAlt}
+                  width={400}
+                  height={280}
+                  class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+              )}
+              <!-- Image gradient -->
+              <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(18,10,12,0.95) 0%, rgba(18,10,12,0.2) 50%, transparent 100%);"></div>
+              
+              <!-- Badge -->
+              {wine.badge && (
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="text-xs font-semibold px-3 py-1 rounded-sm"
+                    style={`${badgeStyles[wine.badgeColor || 'gold']} font-family: var(--font-family-body); letter-spacing: 0.05em; font-size: 0.65rem; text-transform: uppercase;`}
+                  >
+                    {wine.badge}
+                  </span>
+                </div>
+              )}
+
+              <!-- Vintage on image -->
+              {wine.vintage && (
+                <div class="absolute top-4 right-4">
+                  <span class="text-xs text-gold/80 font-display" style="font-family: var(--font-family-display);">
+                    {wine.vintage}
+                  </span>
+                </div>
+              )}
+            </div>
+
+            <!-- Card Content -->
+            <div class="flex flex-col flex-1 p-6">
+              <div class="mb-3">
+                <p class="text-xs text-gold/70 uppercase tracking-wider mb-1" style="font-family: var(--font-family-body); letter-spacing: 0.12em; font-size: 0.65rem;">
+                  {wine.grapes}
+                </p>
+                <h3 class="text-xl font-bold text-cream" style="font-family: var(--font-family-display);">
+                  {wine.name}
+                </h3>
+              </div>
+
+              <p class="text-cream/60 text-sm leading-relaxed mb-4 flex-1" style="font-family: var(--font-family-body); font-weight: 300;">
+                {wine.description}
+              </p>
+
+              <!-- Tasting Notes -->
+              <div class="mt-auto pt-4" style="border-top: 1px solid rgba(212,175,55,0.15);">
+                <p class="text-xs text-gold/60 uppercase tracking-wider mb-2" style="font-family: var(--font-family-body); letter-spacing: 0.1em; font-size: 0.6rem;">
+                  Notas de Cata
+                </p>
+                <div class="flex flex-wrap gap-1.5">
+                  {wine.notes.map((note) => (
+                    <span
+                      class="text-xs px-2.5 py-1 rounded-sm text-cream/70"
+                      style="background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.15); font-family: var(--font-family-body); font-size: 0.7rem;"
+                    >
+                      {note}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <!-- Hover accent border -->
+            <div
+              class="absolute inset-0 rounded-sm pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+              style="border: 1px solid rgba(212,175,55,0.35); box-shadow: inset 0 0 30px rgba(139,21,56,0.1);"
+            ></div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- CTA below grid -->
+    <div class="text-center mt-16 reveal">
+      <a href="#contacto" class="btn-outline">
+        Consulta Disponibilidad
+      </a>
+    </div>
+  </div>
 </section>

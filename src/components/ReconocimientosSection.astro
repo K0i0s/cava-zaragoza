@@ -1,0 +1,241 @@
+---
+import { Image } from "astro:assets";
+import erickImg from "../assets/images/erick_daniel.webp";
+---
+
+<section
+    id="reconocimientos"
+    class="py-24 lg:py-36 relative overflow-hidden"
+    style="background: var(--color-dark-card);"
+>
+    <!-- Background accent -->
+    <div
+        class="absolute inset-0 pointer-events-none"
+        style="background: radial-gradient(ellipse 50% 60% at 20% 50%, rgba(139,21,56,0.08), transparent);"
+    >
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-20 reveal">
+            <p class="section-label mb-4">Credibilidad & Reconocimiento</p>
+            <span class="gold-divider"></span>
+            <h2
+                class="text-3xl sm:text-4xl md:text-5xl font-bold text-cream mt-4"
+                style="font-family: var(--font-family-display);"
+            >
+                Lo Que Dicen de Nosotros
+            </h2>
+        </div>
+
+        <!-- Review Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+            <!-- Review 1 -->
+            <blockquote
+                class="reveal reveal-delay-1 relative p-8 rounded-sm flex flex-col gap-6"
+                style="background: rgba(245,245,220,0.03); border: 1px solid rgba(212,175,55,0.2);"
+            >
+                <!-- Quote mark -->
+                <svg
+                    class="absolute top-6 right-8 opacity-10"
+                    width="48"
+                    height="40"
+                    viewBox="0 0 48 40"
+                    fill="var(--color-gold)"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M0 40V24C0 10.7 8 3.3 24 0l3 5C17.3 7 13 11.7 12 19h8v21H0zm28 0V24C28 10.7 36 3.3 52 0l3 5C45.3 7 41 11.7 40 19h8v21H28z"
+                    ></path>
+                </svg>
+                <!-- Stars -->
+                <div class="flex gap-1" aria-label="5 estrellas">
+                    {
+                        [...Array(5)].map(() => (
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="var(--color-gold)"
+                                aria-hidden="true"
+                            >
+                                <path d="M8 1l1.8 4.5H15l-4 3.1 1.5 4.7L8 10.5l-4.5 2.8L5 8.6 1 5.5h5.2L8 1z" />
+                            </svg>
+                        ))
+                    }
+                </div>
+                <!-- Quote -->
+                <p
+                    class="text-cream/85 text-base md:text-lg leading-relaxed italic flex-1"
+                    style="font-family: var(--font-family-display); font-weight: 400;"
+                >
+                    "Una cava que sorprende por su autenticidad y carácter. El
+                    Syrah/Grenache Reserva 2017 es una joya del Valle de
+                    Guadalupe: complejo, persistente y con una personalidad
+                    única que refleja el terruño mexicano en su máxima
+                    expresión."
+                </p>
+                <!-- Attribution -->
+                <footer class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0"
+                        style="border: 1px solid rgba(212,175,55,0.3);"
+                    >
+                        <Image
+                            src={erickImg}
+                            alt="Crítico de vinos"
+                            width={40}
+                            height={40}
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div>
+                        <cite
+                            class="not-italic text-sm font-semibold text-gold-pale"
+                            style="font-family: var(--font-family-body);"
+                            >Revista Especializada en Vinos</cite
+                        >
+                        <p
+                            class="text-xs text-cream/50 mt-0.5"
+                            style="font-family: var(--font-family-body);"
+                        >
+                            Crítica de vinos · Baja California
+                        </p>
+                    </div>
+                </footer>
+            </blockquote>
+
+            <!-- Review 2 -->
+            <blockquote
+                class="reveal reveal-delay-2 relative p-8 rounded-sm flex flex-col gap-6"
+                style="background: rgba(245,245,220,0.03); border: 1px solid rgba(212,175,55,0.2);"
+            >
+                <!-- Quote mark -->
+                <svg
+                    class="absolute top-6 right-8 opacity-10"
+                    width="48"
+                    height="40"
+                    viewBox="0 0 48 40"
+                    fill="var(--color-gold)"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M0 40V24C0 10.7 8 3.3 24 0l3 5C17.3 7 13 11.7 12 19h8v21H0zm28 0V24C28 10.7 36 3.3 52 0l3 5C45.3 7 41 11.7 40 19h8v21H28z"
+                    ></path>
+                </svg>
+                <!-- Stars -->
+                <div class="flex gap-1" aria-label="5 estrellas">
+                    {
+                        [...Array(5)].map(() => (
+                            <svg
+                                width="16"
+                                height="16"
+                                viewBox="0 0 16 16"
+                                fill="var(--color-gold)"
+                                aria-hidden="true"
+                            >
+                                <path d="M8 1l1.8 4.5H15l-4 3.1 1.5 4.7L8 10.5l-4.5 2.8L5 8.6 1 5.5h5.2L8 1z" />
+                            </svg>
+                        ))
+                    }
+                </div>
+                <!-- Quote -->
+                <p
+                    class="text-cream/85 text-base md:text-lg leading-relaxed italic flex-1"
+                    style="font-family: var(--font-family-display); font-weight: 400;"
+                >
+                    "La Mezcla de Blancos de Cava Zaragoza demuestra que Baja
+                    California puede producir blancos de clase mundial.
+                    Frescura, elegancia y una mineralidad que te transporta
+                    directo al Valle. Una propuesta honesta y de gran valor."
+                </p>
+                <!-- Attribution -->
+                <footer class="flex items-center gap-4">
+                    <div
+                        class="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center"
+                        style="background: rgba(139,21,56,0.4); border: 1px solid rgba(212,175,55,0.3);"
+                    >
+                        <svg
+                            width="18"
+                            height="18"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="var(--color-gold)"
+                            stroke-width="1.5"
+                            aria-hidden="true"
+                        >
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                            ></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <div>
+                        <cite
+                            class="not-italic text-sm font-semibold text-gold-pale"
+                            style="font-family: var(--font-family-body);"
+                            >Club de Vinos México</cite
+                        >
+                        <p
+                            class="text-xs text-cream/50 mt-0.5"
+                            style="font-family: var(--font-family-body);"
+                        >
+                            Sommelier certificado
+                        </p>
+                    </div>
+                </footer>
+            </blockquote>
+        </div>
+
+        <!-- Award / Credential Badges -->
+        <div
+            class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal reveal-delay-3"
+        >
+            {
+                [
+                    {
+                        icon: "🍷",
+                        label: "Valorado por Revista Especializada",
+                        sub: "Crítica especializada",
+                    },
+                    {
+                        icon: "🌿",
+                        label: "Producción Artesanal",
+                        sub: "100% Valle de Guadalupe",
+                    },
+                    {
+                        icon: "🏆",
+                        label: "Calidad Premium",
+                        sub: "Selección exclusiva",
+                    },
+                    {
+                        icon: "🤝",
+                        label: "Modelo de Socios",
+                        sub: "Red de distribución selecta",
+                    },
+                ].map((badge) => (
+                    <div
+                        class="text-center p-6 rounded-sm"
+                        style="background: rgba(245,245,220,0.03); border: 1px solid rgba(212,175,55,0.15);"
+                    >
+                        <div class="text-3xl mb-3" aria-hidden="true">
+                            {badge.icon}
+                        </div>
+                        <p
+                            class="text-xs font-semibold text-cream/85 leading-snug mb-1"
+                            style="font-family: var(--font-family-body);"
+                        >
+                            {badge.label}
+                        </p>
+                        <p
+                            class="text-xs text-cream/40"
+                            style="font-family: var(--font-family-body);"
+                        >
+                            {badge.sub}
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

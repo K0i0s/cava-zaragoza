@@ -1,78 +1,140 @@
 ---
-import "../styles/global.css";
-import { Image } from "astro:assets";
-import cavaLogo from "../assets/cava-logo.png";
-import heroMobile from "../assets/hero_mobile.webp";
-import heroDesktop from "../assets/hero_desktop.webp";
+import heroDesktop from "../assets/images/hero_desktop.webp";
+import heroMobile from "../assets/images/hero_mobile.webp";
 ---
 
-<!-- Hero Section -->
 <section
-    class="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+    id="inicio"
+    class="relative min-h-screen flex items-center justify-center overflow-hidden"
 >
-    <!-- Background Image with Overlay -->
-    <div class="absolute inset-0 z-0">
-        <div
-            class="absolute inset-0 bg-gradient-to-b from-background-dark/30 to-background-dark/60 z-10"
-        >
-        </div>
-        <div class="absolute inset-0 bg-[#725F37]/40 mix-blend-multiply z-10">
-        </div>
-        <Image
-            src={heroMobile}
-            alt="Entrada de la cava, rodeada de las vid"
+    <!-- Background Image (responsive) -->
+    <picture class="absolute inset-0 w-full h-full">
+        <source media="(max-width: 767px)" srcset={heroMobile.src} />
+        <source media="(min-width: 768px)" srcset={heroDesktop.src} />
+        <img
+            src={heroDesktop.src}
+            alt="Viñedos del Valle de Guadalupe — Cava Zaragoza"
+            class="w-full h-full object-cover object-center"
+            loading="eager"
             fetchpriority="high"
-            width={750}
-            height={1334}
-            class="bg-cover bg-center bg-no-repeat transform scale-105 md:hidden"
         />
-        <Image
-            src={heroDesktop}
-            alt="Entrada de la cava, junto a una copa de vino"
-            fetchpriority="high"
-            width={1920}
-            height={1080}
-            class="bg-cover bg-center bg-no-repeat transform scale-105 hidden md:block"
-        />
-    </div>
-    <div class="relative z-20 container mx-auto px-4 text-center max-w-4xl">
-        <span
-            class="text-gold uppercase tracking-[0.2em] text-sm md:text-base font-medium mb-4 block animate-fade-in"
-            >Valle de Guadalupe, México</span
-        >
-        <Image
-            src={cavaLogo}
-            alt="Cava Zaragoza Logo"
-            width={500}
-            height={500}
-            class="w-96 md:w-128 h-auto mx-auto my-2"
-        />
-        <p
-            class="text-white/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto leading-relaxed"
-        >
-            Descubre la excelencia y tradición de nuestra cava familiar en el
-            corazón del Valle.
-        </p>
-        <div
-            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
-        >
-            <button
-                class="w-full sm:w-auto bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg text-sm font-bold uppercase tracking-widest transition-all transform hover:scale-105 shadow-xl"
-            >
-                Descubre Nuestra Selección
-            </button>
-            <button
-                class="w-full sm:w-auto bg-transparent border border-white text-white hover:bg-white hover:text-background-dark px-8 py-4 rounded-lg text-sm font-bold uppercase tracking-widest transition-all backdrop-blur-sm"
-            >
-                Programa tu Visita
-            </button>
-        </div>
+    </picture>
+
+    <!-- Layered Overlays -->
+    <div
+        class="absolute inset-0"
+        style="background: linear-gradient(to bottom, rgba(18,10,12,0.4) 0%, rgba(18,10,12,0.2) 40%, rgba(18,10,12,0.7) 80%, rgba(18,10,12,0.95) 100%);"
+    >
     </div>
     <div
-        class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce text-white/50"
+        class="absolute inset-0"
+        style="background: radial-gradient(ellipse at center, transparent 40%, rgba(18,10,12,0.5) 100%);"
     >
-        <span class="material-symbols-outlined text-4xl"
-            >keyboard_arrow_down</span
+    </div>
+
+    <!-- Decorative gold line top -->
+    <div
+        class="absolute top-0 left-0 right-0 h-px"
+        style="background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent);"
+    >
+    </div>
+
+    <!-- Hero Content -->
+    <div
+        class="relative z-10 text-center px-6 sm:px-8 max-w-4xl mx-auto pt-24 pb-20"
+    >
+        <!-- Label -->
+        <p
+            class="section-label mb-6 animate-fade-in"
+            style="animation-delay: 0.2s;"
         >
+            Valle de Guadalupe · Baja California
+        </p>
+
+        <!-- Decorative ornament -->
+        <div
+            class="flex items-center justify-center gap-4 mb-8 animate-fade-in"
+            style="animation-delay: 0.4s;"
+        >
+            <div
+                style="height: 1px; width: 3rem; background: linear-gradient(to right, transparent, var(--color-gold));"
+            >
+            </div>
+            <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+            >
+                <path
+                    d="M10 2L11.5 8.5L18 10L11.5 11.5L10 18L8.5 11.5L2 10L8.5 8.5L10 2Z"
+                    fill="#D4AF37"
+                    opacity="0.8"></path>
+            </svg>
+            <div
+                style="height: 1px; width: 3rem; background: linear-gradient(to left, transparent, var(--color-gold));"
+            >
+            </div>
+        </div>
+
+        <!-- Main Headline -->
+        <h1
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6 animate-fade-up"
+            style="font-family: var(--font-family-display); animation-delay: 0.3s; text-shadow: 0 2px 30px rgba(0,0,0,0.5);"
+        >
+            Vinos Artesanales<br />
+            <em class="not-italic" style="color: var(--color-gold);"
+                >del Valle</em
+            >
+        </h1>
+
+        <!-- Subheadline -->
+        <p
+            class="text-base sm:text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up"
+            style="font-family: var(--font-family-body); font-weight: 300; animation-delay: 0.5s;"
+        >
+            El sueño de Don Zaragoza, hecho vino. Desde el corazón del Valle
+            hasta tu copa, con autenticidad artesanal y la pasión de quien ama
+            la tierra.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up"
+            style="animation-delay: 0.7s;"
+        >
+            <a href="#vinos" class="btn-primary">
+                <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M12 3C8.5 3 5.5 6 5.5 9c0 3.5 2.5 6.5 6.5 11 4-4.5 6.5-7.5 6.5-11 0-3-3-6-6.5-6z"
+                    ></path>
+                    <circle cx="12" cy="9" r="2.5"></circle>
+                </svg>
+                Descubre Nuestros Vinos
+            </a>
+            <a href="#contacto" class="btn-outline"> Agenda tu Visita </a>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-fade-in"
+            style="animation-delay: 1.2s;"
+        >
+            <span
+                class="text-cream/40 text-[0.625rem] tracking-[0.2em] uppercase"
+                style="font-family: var(--font-family-body);">Desliza</span
+            >
+            <div class="w-px h-10 bg-gradient-to-b from-gold/60 to-transparent">
+            </div>
+        </div>
     </div>
 </section>
