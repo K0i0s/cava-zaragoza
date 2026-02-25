@@ -1,0 +1,421 @@
+---
+/**
+ * CredibilitySection — Reseñas de Google y reconocimientos de revistas especializadas.
+ * Placeholder de contenido real hasta que el cliente proporcione los textos exactos.
+ */
+
+const googleReviews = [
+    {
+        id: 'gr-1',
+        author: 'Mariana R.',
+        stars: 5,
+        date: 'Enero 2024',
+        text: 'Una experiencia increíble. Los vinos tienen un carácter único que no encuentras en ningún otro lugar del Valle. Don Zaragoza es un anfitrión extraordinario.',
+        source: 'google',
+        avatar: 'M',
+    },
+    {
+        id: 'gr-2',
+        author: 'Carlos V.',
+        stars: 5,
+        date: 'Noviembre 2023',
+        text: 'El Syrah/Grenache Reserva es una obra de arte. Complejidad, elegancia y un final interminable. Definitivamente vale la pena el viaje a Valle de Guadalupe.',
+        source: 'google',
+        avatar: 'C',
+    },
+    {
+        id: 'gr-3',
+        author: 'Sofía L.',
+        stars: 5,
+        date: 'Octubre 2023',
+        text: 'La Mezcla de Blancos es perfecta para el clima del Valle. Fresca, mineral y muy versátil. Volveré a comprar sin duda.',
+        source: 'google',
+        avatar: 'S',
+    },
+];
+
+const magazineReviews = [
+    {
+        id: 'mag-1',
+        publication: 'Revista Cava',
+        quote: 'Una propuesta honesta y artesanal que refleja con fidelidad el espíritu del Valle de Guadalupe. Sus vinos muestran una identidad clara y una técnica depurada.',
+        rating: '92 puntos',
+        year: '2023',
+        // Sello/logo placeholder — reemplazar con imagen real
+        logoPlaceholder: true,
+    },
+    {
+        id: 'mag-2',
+        publication: 'Guía de Vinos de Baja California',
+        quote: 'Cava Zaragoza destaca por su autenticidad y su compromiso con la calidad artesanal. Una bodega boutique que merece toda la atención.',
+        rating: 'Mención Especial',
+        year: '2022',
+        logoPlaceholder: true,
+    },
+];
+---
+
+<section
+    id="credibilidad"
+    aria-label="Reseñas y Reconocimientos"
+    style="background: var(--color-dark-bg); position: relative; overflow: hidden;"
+>
+    <!-- Subtle radial glow -->
+    <div class="bg-glow" aria-hidden="true"></div>
+
+    <div class="section-container">
+        <!-- Section Header -->
+        <div class="section-header reveal">
+            <p class="section-label">Opiniones</p>
+            <div class="gold-divider"></div>
+            <h2 class="section-title">
+                Lo Que Dicen<br />
+                <em class="title-accent">Nuestros Visitantes</em>
+            </h2>
+            <p class="section-subtitle">
+                Reconocidos por la prensa especializada y por quienes han vivido la experiencia
+                Cava Zaragoza de primera mano.
+            </p>
+        </div>
+
+        <!-- Magazine Awards Row -->
+        <div class="awards-strip reveal">
+            {
+                magazineReviews.map((mag) => (
+                    <div class="award-card" aria-label={`Reconocimiento de ${mag.publication}`}>
+                        <!-- Logo placeholder -->
+                        <div class="award-logo-placeholder" aria-label={`Logo de ${mag.publication} — próximamente`}>
+                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                                <circle cx="14" cy="14" r="12" stroke="rgba(212,175,55,0.4)" stroke-width="1.2" />
+                                <path d="M14 5l1.6 5h5.2l-4.2 3.1 1.6 5-4.2-3.1-4.2 3.1 1.6-5L7.2 10h5.2z" fill="rgba(212,175,55,0.5)" />
+                            </svg>
+                            <span class="logo-placeholder-text">{mag.publication}</span>
+                        </div>
+
+                        <div class="award-content">
+                            <span class="award-rating">{mag.rating}</span>
+                            <span class="award-year">{mag.year}</span>
+                        </div>
+
+                        <blockquote class="award-quote">"{mag.quote}"</blockquote>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- Google Reviews divider -->
+        <div class="reviews-divider reveal">
+            <div class="divider-line"></div>
+            <div class="divider-label">
+                <!-- Google icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <span>Reseñas de Google</span>
+                <!-- Stars -->
+                <span class="google-rating">4.9 ★★★★★</span>
+            </div>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- Google Reviews Cards -->
+        <div class="google-reviews-grid">
+            {
+                googleReviews.map((review, i) => (
+                    <div class={`review-card reveal reveal-delay-${i + 1}`} aria-label={`Reseña de ${review.author}`}>
+                        <!-- Stars -->
+                        <div class="review-stars" aria-label={`${review.stars} estrellas`}>
+                            {Array.from({ length: review.stars }).map(() => (
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="var(--color-gold)" aria-hidden="true">
+                                    <path d="M6 1l1.2 3.6H11L8.1 6.8l1.1 3.6L6 8.4l-3.2 2 1.1-3.6L1 4.6h3.8z" />
+                                </svg>
+                            ))}
+                        </div>
+
+                        <blockquote class="review-text">"{review.text}"</blockquote>
+
+                        <footer class="review-footer">
+                            <!-- Avatar -->
+                            <div class="review-avatar" aria-hidden="true">
+                                {review.avatar}
+                            </div>
+                            <div class="review-meta">
+                                <span class="review-author">{review.author}</span>
+                                <span class="review-date">{review.source === 'google' ? 'Google · ' : ''}{review.date}</span>
+                            </div>
+                        </footer>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ── Layout ── */
+    .section-container {
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 6rem 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        .section-container {
+            padding: 7rem 2rem;
+        }
+    }
+
+    /* ── Background glow ── */
+    .bg-glow {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 400px;
+        background: radial-gradient(ellipse, rgba(139, 21, 56, 0.08) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    /* ── Section Header ── */
+    .section-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .section-title {
+        font-family: var(--font-family-display);
+        font-size: clamp(1.9rem, 4vw, 3rem);
+        font-weight: 700;
+        color: var(--color-cream);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .title-accent {
+        font-style: italic;
+        color: var(--color-gold);
+    }
+
+    .section-subtitle {
+        font-family: var(--font-family-body);
+        font-size: 1rem;
+        color: rgba(245, 245, 220, 0.55);
+        max-width: 36rem;
+        margin: 0 auto;
+        line-height: 1.7;
+        font-weight: 300;
+    }
+
+    /* ── Magazine Awards ── */
+    .awards-strip {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+    }
+
+    @media (min-width: 640px) {
+        .awards-strip {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .award-card {
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        background: linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.04) 0%,
+            rgba(30, 16, 20, 0.6) 100%
+        );
+        padding: 1.75rem;
+        position: relative;
+        transition: border-color 0.3s ease;
+    }
+
+    .award-card:hover {
+        border-color: rgba(212, 175, 55, 0.45);
+    }
+
+    /* top-left decorative corner */
+    .award-card::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        width: 2rem;
+        height: 2rem;
+        border-top: 2px solid var(--color-gold);
+        border-left: 2px solid var(--color-gold);
+        opacity: 0.5;
+    }
+
+    .award-logo-placeholder {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .logo-placeholder-text {
+        font-family: var(--font-family-body);
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(212, 175, 55, 0.6);
+    }
+
+    .award-content {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .award-rating {
+        font-family: var(--font-family-display);
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--color-gold);
+    }
+
+    .award-year {
+        font-family: var(--font-family-body);
+        font-size: 0.7rem;
+        color: rgba(245, 245, 220, 0.35);
+        letter-spacing: 0.1em;
+    }
+
+    .award-quote {
+        font-family: var(--font-family-body);
+        font-size: 0.875rem;
+        color: rgba(245, 245, 220, 0.6);
+        line-height: 1.65;
+        font-weight: 300;
+        font-style: italic;
+        margin: 0;
+        border-left: 2px solid rgba(212, 175, 55, 0.25);
+        padding-left: 0.75rem;
+    }
+
+    /* ── Divider ── */
+    .reviews-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .divider-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
+    }
+
+    .divider-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-family-body);
+        font-size: 0.75rem;
+        color: rgba(245, 245, 220, 0.5);
+        white-space: nowrap;
+        letter-spacing: 0.05em;
+    }
+
+    .google-rating {
+        font-weight: 600;
+        color: var(--color-gold);
+    }
+
+    /* ── Google Reviews Grid ── */
+    .google-reviews-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+        .google-reviews-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    /* ── Review Card ── */
+    .review-card {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid rgba(245, 245, 220, 0.07);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .review-card:hover {
+        border-color: rgba(212, 175, 55, 0.2);
+        background: rgba(212, 175, 55, 0.03);
+    }
+
+    .review-stars {
+        display: flex;
+        gap: 2px;
+    }
+
+    .review-text {
+        font-family: var(--font-family-body);
+        font-size: 0.875rem;
+        color: rgba(245, 245, 220, 0.65);
+        line-height: 1.65;
+        font-weight: 300;
+        font-style: italic;
+        margin: 0;
+        flex: 1;
+    }
+
+    .review-footer {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid rgba(245, 245, 220, 0.06);
+    }
+
+    .review-avatar {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        background: var(--color-burgundy);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-family-body);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--color-gold-pale);
+        flex-shrink: 0;
+    }
+
+    .review-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+    }
+
+    .review-author {
+        font-family: var(--font-family-body);
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--color-cream);
+    }
+
+    .review-date {
+        font-family: var(--font-family-body);
+        font-size: 0.65rem;
+        color: rgba(245, 245, 220, 0.35);
+        letter-spacing: 0.05em;
+    }
+</style>

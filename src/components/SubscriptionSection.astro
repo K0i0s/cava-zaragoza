@@ -1,0 +1,366 @@
+---
+/**
+ * SubscriptionSection — Franja de suscripción a novedades.
+ * Formulario minimalista: solo email + botón. Sin backend real por ahora.
+ */
+---
+
+<section
+    id="novedades"
+    aria-label="Suscríbete a nuestras novedades"
+    class="subscription-section"
+>
+    <!-- Decorative gold line top -->
+    <div class="top-line" aria-hidden="true"></div>
+
+    <div class="subscription-inner">
+        <!-- Left ornament -->
+        <div class="ornament" aria-hidden="true">
+            <div class="ornament-line"></div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                    d="M8 1L9.2 6.2L14.5 8L9.2 9.8L8 15L6.8 9.8L1.5 8L6.8 6.2z"
+                    fill="var(--color-gold)"
+                    opacity="0.7"></path>
+            </svg>
+            <div class="ornament-line"></div>
+        </div>
+
+        <!-- Text block -->
+        <div class="subscription-text">
+            <p class="subscription-label section-label">Mantente al tanto</p>
+            <h2 class="subscription-title">
+                Recibe Novedades<em class="subscription-accent"> de la Cava</em>
+            </h2>
+            <p class="subscription-sub">
+                Lanzamientos, cosechas especiales y eventos exclusivos — directo
+                a tu buzón.
+            </p>
+        </div>
+
+        <!-- Form -->
+        <form
+            class="subscription-form"
+            aria-label="Formulario de suscripción a novedades"
+            onsubmit="handleSubscribe(event)"
+            novalidate
+        >
+            <div class="input-group">
+                <label for="subscription-email" class="sr-only"
+                    >Correo electrónico</label
+                >
+                <input
+                    id="subscription-email"
+                    type="email"
+                    name="email"
+                    class="email-input"
+                    placeholder="tu@correo.com"
+                    required
+                    autocomplete="email"
+                    aria-required="true"
+                />
+                <button
+                    type="submit"
+                    class="subscribe-btn"
+                    aria-label="Suscribirse a novedades"
+                >
+                    Suscribirse
+                    <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 14 14"
+                        fill="none"
+                        aria-hidden="true"
+                        class="btn-arrow"
+                    >
+                        <path
+                            d="M2 7h10M8 3l4 4-4 4"
+                            stroke="currentColor"
+                            stroke-width="1.6"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Success / Error message -->
+            <p
+                id="subscription-msg"
+                class="subscription-msg"
+                role="alert"
+                aria-live="polite"
+            >
+            </p>
+
+            <p class="subscription-disclaimer">
+                Sin spam. Puedes darte de baja en cualquier momento.
+            </p>
+        </form>
+    </div>
+
+    <!-- Decorative gold line bottom -->
+    <div class="bottom-line" aria-hidden="true"></div>
+</section>
+
+<script>
+    function handleSubscribe(e: Event) {
+        e.preventDefault();
+        const form = e.target as HTMLFormElement;
+        const input = form.querySelector<HTMLInputElement>(
+            "#subscription-email",
+        )!;
+        const msg = document.getElementById("subscription-msg")!;
+        const btn = form.querySelector<HTMLButtonElement>(".subscribe-btn")!;
+
+        if (!input.validity.valid) {
+            msg.textContent = "Por favor ingresa un correo válido.";
+            msg.className = "subscription-msg error";
+            input.focus();
+            return;
+        }
+
+        // Animate button
+        btn.disabled = true;
+        btn.textContent = "Enviando…";
+
+        // Simulate async (replace with real fetch when backend is ready)
+        setTimeout(() => {
+            msg.textContent = "¡Gracias! Te avisaremos de nuestras novedades.";
+            msg.className = "subscription-msg success";
+            input.value = "";
+            btn.textContent = "✓ Suscrito";
+            btn.style.background = "var(--color-olive)";
+        }, 900);
+    }
+
+    // Expose to global scope for inline handler
+    (
+        window as Window &
+            typeof globalThis & { handleSubscribe: (e: Event) => void }
+    ).handleSubscribe = handleSubscribe;
+</script>
+
+<style>
+    /* ── Section ── */
+    .subscription-section {
+        position: relative;
+        background: var(--color-charcoal-soft);
+        overflow: hidden;
+    }
+
+    /* Background texture */
+    .subscription-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+            0deg,
+            rgba(212, 175, 55, 0.025) 0px,
+            rgba(212, 175, 55, 0.025) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+        pointer-events: none;
+    }
+
+    .top-line,
+    .bottom-line {
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(212, 175, 55, 0.3),
+            transparent
+        );
+    }
+
+    /* ── Inner layout ── */
+    .subscription-inner {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 4.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: 1024px) {
+        .subscription-inner {
+            padding: 5rem 2rem;
+        }
+    }
+
+    /* ── Ornament ── */
+    .ornament {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .ornament-line {
+        width: 3rem;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(212, 175, 55, 0.5)
+        );
+    }
+
+    .ornament-line:last-child {
+        background: linear-gradient(
+            to left,
+            transparent,
+            rgba(212, 175, 55, 0.5)
+        );
+    }
+
+    /* ── Text ── */
+    .subscription-label {
+        margin-bottom: 0.5rem;
+    }
+
+    .subscription-title {
+        font-family: var(--font-family-display);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 700;
+        color: var(--color-cream);
+        line-height: 1.2;
+        margin: 0 0 0.6rem;
+    }
+
+    .subscription-accent {
+        font-style: italic;
+        color: var(--color-gold);
+    }
+
+    .subscription-sub {
+        font-family: var(--font-family-body);
+        font-size: 0.925rem;
+        color: rgba(245, 245, 220, 0.5);
+        font-weight: 300;
+        max-width: 30rem;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* ── Form ── */
+    .subscription-form {
+        width: 100%;
+        max-width: 26rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .input-group {
+        display: flex;
+        width: 100%;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        background: rgba(18, 10, 12, 0.6);
+        transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+
+    .input-group:focus-within {
+        border-color: rgba(212, 175, 55, 0.6);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.06);
+    }
+
+    .email-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0.85rem 1rem;
+        background: transparent;
+        border: none;
+        outline: none;
+        font-family: var(--font-family-body);
+        font-size: 0.875rem;
+        font-weight: 300;
+        color: var(--color-cream);
+    }
+
+    .email-input::placeholder {
+        color: rgba(245, 245, 220, 0.3);
+    }
+
+    .subscribe-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.85rem 1.25rem;
+        background: var(--color-burgundy);
+        border: none;
+        color: var(--color-gold-pale);
+        font-family: var(--font-family-body);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .subscribe-btn:hover:not(:disabled) {
+        background: var(--color-burgundy-light);
+    }
+
+    .subscribe-btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    .btn-arrow {
+        transition: transform 0.2s ease;
+    }
+
+    .subscribe-btn:hover .btn-arrow {
+        transform: translateX(3px);
+    }
+
+    /* ── Messages ── */
+    .subscription-msg {
+        font-family: var(--font-family-body);
+        font-size: 0.8rem;
+        min-height: 1.2rem;
+        margin: 0;
+    }
+
+    .subscription-msg.success {
+        color: #7bc67e;
+    }
+
+    .subscription-msg.error {
+        color: #f28b82;
+    }
+
+    .subscription-disclaimer {
+        font-family: var(--font-family-body);
+        font-size: 0.65rem;
+        letter-spacing: 0.05em;
+        color: rgba(245, 245, 220, 0.25);
+        margin: 0;
+    }
+
+    /* ── Accessibility ── */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+</style>

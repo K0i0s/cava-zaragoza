@@ -1,7 +1,7 @@
-# Prompt para Desarrollo de Landing Page - Cava Zaragoza
+# Prompt para Desarrollo de Multi-página - Cava Zaragoza
 
 ## Contexto del Proyecto
-Desarrollar una landing page moderna, elegante y de alto rendimiento para Cava Zaragoza, una cava boutique artesanal ubicada en Valle de Guadalupe, Baja California. La página actual tiene problemas graves de diseño, carece de HTTPS, no es responsive y tiene SEO deficiente. Esta renovación busca atraer clientes potenciales y reflejar la calidad premium de sus vinos.
+Desarrollar una multipagina moderna, elegante y de alto rendimiento para Cava Zaragoza, una cava boutique artesanal ubicada en Valle de Guadalupe, Baja California. La página actual tiene problemas graves de diseño, carece de HTTPS, no es responsive y tiene SEO deficiente. Esta renovación busca atraer clientes potenciales y reflejar la calidad premium de sus vinos.
 
 ## Stack Tecnológico
 - **Framework:** Astro 5.17
@@ -36,6 +36,14 @@ El Sr. Zaragoza, originario del Valle de Guadalupe, soñaba con crear su propia 
 - Cabernet Sauvignon/Grenache 2019
 - Mezcla de Blancos (vino joven)
 - Vino Rosado (vino joven)
+
+# Al ser multipagina contara con:
+- Inicio ('/'): Propuesta de valor y boton gigante de reserva. (Enganchar a posibles clientes)
+- Vinos ('/vinos'): Catalogo de vinos.
+- Historia ('/historia')
+- Contacto ('/contacto'): Mapa con ubicacion y iframe, telefono, redes sociales.
+- Reservar ('/reservaciones'): Formulario limpio con una imagen y horario.
+
 
 **Reconocimientos:** La cava cuenta con valoraciones de una revista especializada (incluir en sección de credibilidad).
 
@@ -76,85 +84,6 @@ Ensenada, Península de Baja California, México
 - **Títulos:** Serif elegante (Playfair Display, Cormorant Garamond, o Crimson Text)
 - **Cuerpo:** Sans-serif limpia y legible (Montserrat, Inter, o Work Sans)
 - Jerarquía clara con contraste apropiado
-
-### Estructura de la Landing Page
-
-#### 1. Hero Section (Above the fold)
-- **Objetivo:** Impacto visual inmediato
-- **Elementos:**
-  - Imagen/video de fondo de alta calidad (cava, viñedos, o Valle de Guadalupe)
-  - Overlay sutil para legibilidad
-  - Headline principal: "Vinos Artesanales del Valle de Guadalupe"
-  - Subheadline: Breve mención del sueño del Sr. Zaragoza
-  - CTA principal: "Descubre Nuestra Selección" (scroll suave a catálogo)
-  - CTA secundario: "Contáctanos" o "Programa tu Visita"
-- **Animaciones:** Fade-in suave, parallax ligero en scroll
-
-#### 2. Nuestra Historia
-- **Objetivo:** Conectar emocionalmente
-- **Elementos:**
-  - Título: "Nuestra Historia" o "El Sueño de Don Zaragoza"
-  - Narrativa breve (2-3 párrafos) sobre el origen
-  - Destacar: "Vinos de nuevo mundo con alma del Valle de Guadalupe"
-  - Imagen de la cava en el patio (si está disponible)
-  - Layout: Texto + imagen side-by-side (responsive a stack en mobile)
-
-#### 3. Nuestros Vinos (Catálogo)
-- **Objetivo:** Showcase de productos con elegancia
-- **Elementos:**
-  - Grid responsivo de cards (3 columnas desktop, 2 tablet, 1 mobile)
-  - Cada card incluye:
-    - Imagen de botella (fotografía profesional crucial)
-    - Nombre del vino
-    - Tipo de uva/blend
-    - Año de cosecha (si aplica)
-    - Notas de cata breves (2-3 líneas)
-    - Hover effect elegante
-  - Destacar con badges: Reserva, Edición Especial, etc.
-- **Interacción:** Hover revela más detalles, posible modal con información completa
-
-#### 4. Reconocimientos y Credibilidad
-- **Objetivo:** Social proof y confianza
-- **Elementos:**
-  - Título: "Reconocimientos" o "Valoraciones"
-  - Destacar valoraciones de la revista especializada (citas textuales si es posible)
-  - Badges o iconos de premios
-  - Layout: Cards horizontales o testimonial-style
-  - Tipografía elegante para las citas
-
-#### 5. Valle de Guadalupe (Contexto y Terruño)
-- **Objetivo:** Educar y diferenciar
-- **Elementos:**
-  - Breve sección sobre la importancia del terruño
-  - "Proceso artesanal" o "Hecho a mano con pasión"
-  - Imágenes del valle, viñedos, proceso de elaboración
-  - 2-3 puntos clave sobre calidad y tradición
-
-#### 6. Visítanos / Contacto
-- **Objetivo:** Conversión y acción directa
-- **Elementos:**
-  - Dos columnas: Formulario de contacto + Información
-  - **Formulario:**
-    - Nombre
-    - Email
-    - Teléfono
-    - Mensaje
-    - CTA: "Solicitar Información" o "Agendar Visita"
-  - **Información:**
-    - Dirección completa
-    - Mapa embebido (Google Maps)
-    - Horarios de atención (destacar días abiertos)
-    - Email y teléfono con iconos
-    - Opcional: Enlace a WhatsApp
-  - **CTA adicional:** "Conviértete en Socio" (si aplica)
-
-#### 7. Footer
-- **Elementos:**
-  - Logo de Cava Zaragoza
-  - Enlaces rápidos (Inicio, Vinos, Historia, Contacto)
-  - Redes sociales (si tienen)
-  - Copyright
-  - Diseño minimalista y elegante
 
 ## Requerimientos Técnicos
 

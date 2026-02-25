@@ -15,7 +15,7 @@ import logo from "../assets/images/cava-logo.webp";
         <div class="flex items-center justify-between h-20">
             <!-- Logo -->
             <a
-                href="#inicio"
+                href="/"
                 class="flex items-center gap-3 group"
                 aria-label="Cava Zaragoza - Inicio"
             >
@@ -34,11 +34,11 @@ import logo from "../assets/images/cava-logo.webp";
             <ul class="hidden md:flex items-center gap-8 list-none m-0 p-0">
                 {
                     [
-                        { href: "#historia", label: "Historia" },
-                        { href: "#vinos", label: "Nuestros Vinos" },
-                        { href: "#reconocimientos", label: "Reconocimientos" },
-                        { href: "#terruno", label: "El Valle" },
-                        { href: "#contacto", label: "Contacto" },
+                        { href: "/", label: "Inicio" },
+                        { href: "/vinos", label: "Nuestros Vinos" },
+                        { href: "/historia", label: "Historia" },
+                        { href: "/contacto", label: "Contacto" },
+                        { href: "/reservar", label: "Reservar" },
                     ].map((link) => (
                         <li>
                             <a
@@ -52,15 +52,6 @@ import logo from "../assets/images/cava-logo.webp";
                     ))
                 }
             </ul>
-
-            <!-- CTA Button desktop -->
-            <a
-                href="#contacto"
-                class="hidden md:inline-flex btn-primary text-xs"
-                aria-label="Agenda tu visita a la cava"
-            >
-                Agenda tu Visita
-            </a>
 
             <!-- Mobile hamburger -->
             <button
@@ -94,11 +85,11 @@ import logo from "../assets/images/cava-logo.webp";
         <ul class="flex flex-col py-6 px-6 gap-1 list-none m-0 p-0">
             {
                 [
-                    { href: "#historia", label: "Historia" },
-                    { href: "#vinos", label: "Nuestros Vinos" },
-                    { href: "#reconocimientos", label: "Reconocimientos" },
-                    { href: "#terruno", label: "El Valle" },
-                    { href: "#contacto", label: "Contacto" },
+                    { href: "/", label: "Inicio" },
+                    { href: "/vinos", label: "Nuestros Vinos" },
+                    { href: "/historia", label: "Historia" },
+                    { href: "/contacto", label: "Contacto" },
+                    { href: "/reservar", label: "Reservar" },
                 ].map((link) => (
                     <li class="border-b border-white/10 last:border-0">
                         <a
@@ -111,14 +102,6 @@ import logo from "../assets/images/cava-logo.webp";
                     </li>
                 ))
             }
-            <li class="pt-4">
-                <a
-                    href="#contacto"
-                    class="mobile-link btn-primary w-full justify-center text-xs"
-                >
-                    Agenda tu Visita
-                </a>
-            </li>
         </ul>
     </div>
 </header>
