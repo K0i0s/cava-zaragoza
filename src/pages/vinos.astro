@@ -1,10 +1,902 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import SubscriptionSection from "../components/SubscriptionSection.astro";
 import Footer from "../components/Footer.astro";
+import { Image } from "astro:assets";
+
+import erickDanielImg from "../assets/images/erick-daniel.webp";
+import malbecImg from "../assets/images/malbec.webp";
+import yocelinRoseImg from "../assets/images/yocelin_rose.webp";
+import tempranilloImg from "../assets/images/tempranillo.webp";
+import cabSauvGrenacheImg from "../assets/images/cabernet-sauvignon-grenache.webp";
+import sauvBlancoChardonnayImg from "../assets/images/sauvignon-blanc-chardonnay.webp";
+import cagreteImg from "../assets/images/cagrete-cabernet-sauvignon.webp";
+import blendImg from "../assets/images/blend.webp";
+
+const categories = [
+    { id: "todos", label: "Todos" },
+    { id: "cava-zaragoza", label: "Cava Zaragoza" },
+    { id: "cagrete", label: "Cagrete" },
+    { id: "don-flavio", label: "Don Flavio Vinos" },
+];
+
+const wines = [
+    {
+        id: "malbec",
+        name: "Malbec",
+        grapes: "Malbec",
+        color: "Tinto",
+        description:
+            "Es un vino de cuerpo medio a alto, jugoso y con una textura aterciopelada, lo que lo hace muy agradable y fácil de beber.",
+        imageAlt: "Botella Malbec - Don Flavio Vinos",
+        image: malbecImg,
+        brand: "don-flavio",
+    },
+    {
+        id: "tempranillo",
+        name: "Tempranillo",
+        grapes: "Tempranillo 100%",
+        color: "Tinto",
+        description:
+            "Suele tener acidez media-baja y taninos suaves, lo que lo hace equilibrado y fácil de beber.",
+        imageAlt: "Botella de Tempranillo - Don Flavio Vinos",
+        image: tempranilloImg,
+        brand: "don-flavio",
+    },
+    {
+        id: "cabernet-sauvignon",
+        name: "Cabernet Sauvignon",
+        grapes: "Cabernet Sauvignon",
+        color: "Tinto",
+        description:
+            "Caracterizado por sus vinos de color rubí intenso, alto cuerpo, taninos firmes y notable acidez.",
+        imageAlt: "Botella de Cabernet Sauvignon - Cagrete",
+        image: cagreteImg,
+        brand: "cagrete",
+    },
+    {
+        id: "mezcla-tintos",
+        name: "Mezcla Tintos",
+        grapes: "Blend de Tintos",
+        color: "Tinto",
+        description:
+            "Suelen ser vinos suaves, de cuerpo medio a intenso, con aromas intensos a frutos negros y taninos moderados.",
+        imageAlt: "Botella de Mezcla Tintos - Cagrete",
+        image: blendImg,
+        brand: "cagrete",
+    },
+    {
+        id: "erick-daniel",
+        name: "Erick Daniel",
+        grapes: "Syrah · Grenache",
+        color: "Tinto",
+        description:
+            "Ensamble clásico que combina la estructura, cuerpo y especias de la Syrah con la fruta, calidez y suavidad de la Grenache.",
+        imageAlt: "Botella Erick Daniel, Syrah · Grenache - Cava Zaragoza",
+        image: erickDanielImg,
+        brand: "cava-zaragoza",
+    },
+    {
+        id: "cabernet-sauvignon-grenache",
+        name: "Cabernet Sauvignon · Grenache",
+        grapes: "Cabernet Sauvignon · Grenache",
+        color: "Tinto",
+        description:
+            "Entrada suave, con taninos estructurados pero integrados, acidez equilibrada y una persistencia prolongada, a menudo aterciopelada.",
+        imageAlt: "Botella de Cabernet Sauvignon · Grenache - Cava Zaragoza",
+        image: cabSauvGrenacheImg,
+        brand: "cava-zaragoza",
+    },
+    {
+        id: "yocelin-rose",
+        name: "Yocelin Rosé",
+        grapes: "Grenache Noir",
+        color: "Rosado",
+        description:
+            "Limpio brillante de tonalidad cuarzo rosado con destellos rosa cobrizo.",
+        imageAlt: "Botella Yocelin Rosé - Cava Zaragoza",
+        image: yocelinRoseImg,
+        brand: "cava-zaragoza",
+    },
+    {
+        id: "sauvignon-blanc-chardonnay",
+        name: "Sauvignon Blanc · Chardonnay",
+        grapes: "Sauvignon Blanc · Chardonnay",
+        color: "Blanco",
+        description:
+            "Combina la frescura, acidez alta y notas cítricas del Sauvignon Blanc con el cuerpo y toques de fruta tropical del Chardonnay.",
+        imageAlt: "Botella de Sauvignon Blanc · Chardonnay - Cava Zaragoza",
+        image: sauvBlancoChardonnayImg,
+        brand: "cava-zaragoza",
+    },
+];
 ---
 
-<Layout>
+<Layout
+    title="Nuestros Vinos | Cava Zaragoza — Valle de Guadalupe"
+    description="Explora la colección completa de vinos artesanales de Cava Zaragoza: Cava Zaragoza, Cagrete y Don Flavio Vinos. Tintos, Rosados y Blancos del Valle de Guadalupe."
+    url="https://cavazaragoza.com.mx/vinos"
+>
     <Navbar />
+
+    <main id="vinos-main" aria-label="Colección de vinos">
+        <!-- ─── Wines Showcase Section ─── -->
+        <section id="wines-showcase" class="relative overflow-hidden">
+            <!-- Subtle background texture -->
+            <div
+                class="absolute inset-0 pointer-events-none"
+                style="background: radial-gradient(ellipse at 20% 50%, rgba(139,21,56,0.06) 0%, transparent 60%), radial-gradient(ellipse at 80% 30%, rgba(212,175,55,0.04) 0%, transparent 50%);"
+            >
+            </div>
+
+            <!-- ─── Page Hero Header ─── -->
+            <header class="vinos-hero reveal">
+                <p class="section-label">Descubre</p>
+                <div class="gold-divider"></div>
+                <h1 class="vinos-headline">
+                    Nuestra <em class="headline-em">Colección</em>
+                </h1>
+                <p class="vinos-subline">
+                    Vinos artesanales del Valle de Guadalupe, elaborados con
+                    pasión y terruño mexicano.
+                </p>
+            </header>
+
+            <!-- ─── Main Layout: Sidebar + Carousel ─── -->
+            <div
+                class="relative z-10 w-full max-w-7xl mx-auto px-2 lg:px-4 py-8 lg:py-12"
+            >
+                <div class="wines-layout reveal reveal-delay-2">
+                    <!-- Mobile Category Bar -->
+                    <div
+                        class="categories-mobile lg:hidden mb-8 -mx-6 px-6 overflow-x-auto"
+                    >
+                        <div class="flex gap-4 min-w-max pb-2">
+                            {
+                                categories.map((cat) => (
+                                    <button
+                                        class="category-btn whitespace-nowrap"
+                                        data-category={cat.id}
+                                        aria-pressed={
+                                            cat.id === "todos"
+                                                ? "true"
+                                                : "false"
+                                        }
+                                    >
+                                        {cat.label}
+                                    </button>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <div class="flex gap-8 lg:gap-12 items-start">
+                        <!-- ─── Desktop Sidebar ─── -->
+                        <nav
+                            class="categories-sidebar hidden lg:flex flex-col gap-1 shrink-0 pt-4"
+                            aria-label="Filtrar por categoría"
+                        >
+                            {
+                                categories.map((cat) => (
+                                    <button
+                                        class="category-btn text-left"
+                                        data-category={cat.id}
+                                        aria-pressed={
+                                            cat.id === "todos"
+                                                ? "true"
+                                                : "false"
+                                        }
+                                    >
+                                        {cat.label}
+                                    </button>
+                                ))
+                            }
+                        </nav>
+
+                        <!-- ─── Carousel Area ─── -->
+                        <div class="carousel-area flex-1 relative">
+                            <!-- Prev Arrow -->
+                            <button
+                                id="wine-prev"
+                                class="carousel-arrow carousel-arrow--left"
+                                aria-label="Vino anterior"
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M13 4L7 10L13 16"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+
+                            <!-- Next Arrow -->
+                            <button
+                                id="wine-next"
+                                class="carousel-arrow carousel-arrow--right"
+                                aria-label="Siguiente vino"
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M7 4L13 10L7 16"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
+                            </button>
+
+                            <!-- ─── Three-panel display ─── -->
+                            <div class="carousel-track">
+                                <!-- Left Peek Bottle -->
+                                <div
+                                    class="peek-bottle peek-bottle--left"
+                                    id="peek-left"
+                                >
+                                    {
+                                        wines.map((wine, i) => (
+                                            <div
+                                                class="peek-slide"
+                                                data-wine-index={i}
+                                                data-brand={wine.brand}
+                                                style={
+                                                    i === wines.length - 1
+                                                        ? "opacity:1;"
+                                                        : "opacity:0; position:absolute; top:0; left:0;"
+                                                }
+                                            >
+                                                <Image
+                                                    src={wine.image}
+                                                    alt={wine.imageAlt}
+                                                    class="peek-img"
+                                                    loading="lazy"
+                                                    widths={[150, 250]}
+                                                    sizes="150px"
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+
+                                <!-- Center Bottle Image -->
+                                <div class="center-bottle" id="center-bottle">
+                                    {
+                                        wines.map((wine, i) => (
+                                            <div
+                                                class="center-bottle__slide"
+                                                data-wine-index={i}
+                                                data-brand={wine.brand}
+                                                style={
+                                                    i === 0
+                                                        ? "opacity:1;"
+                                                        : "opacity:0; position:absolute; top:0; left:0;"
+                                                }
+                                            >
+                                                <Image
+                                                    src={wine.image}
+                                                    alt={wine.imageAlt}
+                                                    class="center-bottle__img"
+                                                    loading="eager"
+                                                    widths={[300, 450]}
+                                                    sizes="300px"
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+
+                                <!-- Center Wine Details -->
+                                <div class="wine-center" id="wine-center">
+                                    {
+                                        wines.map((wine, i) => (
+                                            <article
+                                                class="wine-detail"
+                                                data-wine-index={i}
+                                                data-brand={wine.brand}
+                                                aria-hidden={
+                                                    i !== 0 ? "true" : "false"
+                                                }
+                                                style={
+                                                    i === 0
+                                                        ? "opacity:1; position:relative;"
+                                                        : "opacity:0; position:absolute; top:0; left:0; right:0;"
+                                                }
+                                            >
+                                                <div class="wine-detail__color-badge">
+                                                    {wine.color}
+                                                </div>
+                                                <h2 class="wine-detail__name">
+                                                    {wine.name}
+                                                </h2>
+                                                <p class="wine-detail__grapes">
+                                                    {wine.grapes}
+                                                </p>
+                                                <div class="wine-detail__divider" />
+                                                <p class="wine-detail__desc">
+                                                    {wine.description}
+                                                </p>
+                                            </article>
+                                        ))
+                                    }
+
+                                    <!-- Wine counter -->
+                                    <div class="wine-counter" id="wine-counter">
+                                        <span id="wine-current">01</span>
+                                        <span class="wine-counter__sep">/</span>
+                                        <span id="wine-total">
+                                            {
+                                                String(wines.length).padStart(
+                                                    2,
+                                                    "0",
+                                                )
+                                            }
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Right Peek Bottle -->
+                                <div
+                                    class="peek-bottle peek-bottle--right"
+                                    id="peek-right"
+                                >
+                                    {
+                                        wines.map((wine, i) => (
+                                            <div
+                                                class="peek-slide"
+                                                data-wine-index={i}
+                                                data-brand={wine.brand}
+                                                style={
+                                                    i === 1
+                                                        ? "opacity:1;"
+                                                        : "opacity:0; position:absolute; top:0; left:0;"
+                                                }
+                                            >
+                                                <Image
+                                                    src={wine.image}
+                                                    alt={wine.imageAlt}
+                                                    class="peek-img"
+                                                    loading="lazy"
+                                                    widths={[150, 250]}
+                                                    sizes="150px"
+                                                />
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <SubscriptionSection />
+    </main>
+
     <Footer />
 </Layout>
+
+<!-- ─── Scoped Styles ─── -->
+<style>
+    /* ── Hero Page Header ── */
+    .vinos-hero {
+        text-align: center;
+        padding: 6rem 1.5rem 3.5rem;
+        background: linear-gradient(
+            180deg,
+            rgba(139, 21, 56, 0.08) 0%,
+            transparent 100%
+        );
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        position: relative;
+        z-index: 1;
+    }
+
+    .vinos-headline {
+        font-family: var(--font-family-display);
+        font-size: clamp(2.4rem, 6vw, 5rem);
+        font-weight: 800;
+        color: var(--color-cream);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.25rem;
+    }
+
+    .headline-em {
+        font-style: italic;
+        color: var(--color-gold);
+    }
+
+    .vinos-subline {
+        font-family: var(--font-family-body);
+        font-size: 0.9rem;
+        font-style: italic;
+        color: rgba(245, 245, 220, 0.55);
+        max-width: 36rem;
+        margin: 0 auto;
+        line-height: 1.7;
+    }
+
+    /* ── Category buttons ── */
+    .category-btn {
+        font-family: var(--font-family-body);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 220, 0.45);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.6rem 0;
+        position: relative;
+        transition: color 0.35s ease;
+    }
+
+    .category-btn::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--color-gold);
+        transition: width 0.35s ease;
+    }
+
+    .category-btn:hover {
+        color: rgba(245, 245, 220, 0.8);
+    }
+
+    .category-btn[aria-pressed="true"] {
+        color: var(--color-gold);
+    }
+
+    .category-btn[aria-pressed="true"]::after {
+        width: 2rem;
+    }
+
+    /* Mobile categories */
+    .categories-mobile {
+        scrollbar-width: none;
+    }
+    .categories-mobile::-webkit-scrollbar {
+        display: none;
+    }
+    .categories-mobile .category-btn {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.65rem;
+    }
+
+    /* ── Carousel Layout ── */
+    .carousel-area {
+        position: relative;
+        min-height: 420px;
+    }
+
+    .carousel-track {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        min-height: 400px;
+        position: relative;
+    }
+
+    /* ── Peek Bottles ── */
+    .peek-bottle {
+        position: relative;
+        width: 160px;
+        flex-shrink: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.35;
+        transition: opacity 0.5s ease;
+    }
+
+    @media (min-width: 768px) {
+        .peek-bottle {
+            display: flex;
+        }
+    }
+
+    .peek-bottle:hover {
+        opacity: 0.55;
+    }
+
+    .peek-bottle--left {
+        mask-image: linear-gradient(to right, transparent 0%, black 60%);
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 60%
+        );
+    }
+
+    .peek-bottle--right {
+        mask-image: linear-gradient(to left, transparent 0%, black 60%);
+        -webkit-mask-image: linear-gradient(to left, transparent 0%, black 60%);
+    }
+
+    .peek-img {
+        height: 340px;
+        width: auto;
+        max-width: 140px;
+        object-fit: contain;
+        filter: brightness(0.7);
+        transition:
+            filter 0.5s ease,
+            transform 0.5s ease;
+    }
+
+    .peek-bottle:hover .peek-img {
+        filter: brightness(0.85);
+        transform: scale(1.03);
+    }
+
+    .peek-slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s ease;
+    }
+
+    /* ── Center Bottle (active wine) ── */
+    .center-bottle {
+        position: relative;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+    }
+
+    @media (min-width: 640px) {
+        .center-bottle {
+            width: 240px;
+        }
+    }
+
+    .center-bottle__slide {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.5s ease;
+    }
+
+    .center-bottle__img {
+        height: 440px;
+        width: auto;
+        max-width: 220px;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+    }
+
+    @media (min-width: 640px) {
+        .center-bottle__img {
+            height: 500px;
+            max-width: 260px;
+        }
+    }
+
+    .center-bottle:hover .center-bottle__img {
+        transform: scale(1.02);
+    }
+
+    /* ── Center Wine Details ── */
+    .wine-center {
+        flex: 1;
+        max-width: 380px;
+        min-height: 360px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: left;
+        padding: 2rem 0 2rem 2rem;
+    }
+
+    @media (max-width: 767px) {
+        .wine-center {
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 0 0;
+        }
+    }
+
+    .wine-detail {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: opacity 0.5s ease;
+        width: 100%;
+    }
+
+    .wine-detail__color-badge {
+        font-family: var(--font-family-body);
+        font-size: 0.6rem;
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        background: rgba(212, 175, 55, 0.08);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 0.3rem 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .wine-detail__name {
+        font-family: var(--font-family-display);
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--color-cream);
+        margin: 0 0 0.5rem;
+        line-height: 1.2;
+    }
+
+    @media (min-width: 640px) {
+        .wine-detail__name {
+            font-size: 2.25rem;
+        }
+    }
+
+    .wine-detail__grapes {
+        font-family: var(--font-family-body);
+        font-size: 0.8rem;
+        font-weight: 400;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 220, 0.55);
+        margin: 0 0 1.25rem;
+    }
+
+    .wine-detail__divider {
+        width: 3rem;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            var(--color-gold),
+            transparent
+        );
+        margin-bottom: 1.25rem;
+    }
+
+    .wine-detail__desc {
+        font-family: var(--font-family-body);
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1.75;
+        color: rgba(245, 245, 220, 0.7);
+        max-width: 380px;
+        margin: 0;
+    }
+
+    /* ── Wine Counter ── */
+    .wine-counter {
+        margin-top: 2rem;
+        font-family: var(--font-family-body);
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        color: rgba(245, 245, 220, 0.35);
+    }
+
+    #wine-current {
+        color: var(--color-gold);
+        font-weight: 600;
+    }
+
+    .wine-counter__sep {
+        margin: 0 0.3rem;
+    }
+
+    /* ── Carousel Arrows ── */
+    .carousel-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid rgba(245, 245, 220, 0.2);
+        background: rgba(18, 10, 12, 0.5);
+        color: rgba(245, 245, 220, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+            border-color 0.3s ease,
+            color 0.3s ease,
+            background-color 0.3s ease,
+            transform 0.3s ease;
+        backdrop-filter: blur(4px);
+    }
+
+    .carousel-arrow:hover {
+        border-color: var(--color-gold);
+        color: var(--color-gold);
+        background: rgba(212, 175, 55, 0.08);
+    }
+
+    .carousel-arrow:active {
+        transform: translateY(-50%) scale(0.92);
+    }
+
+    .carousel-arrow--left {
+        left: -0.5rem;
+    }
+
+    .carousel-arrow--right {
+        right: -0.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .carousel-arrow--left {
+            left: -1.5rem;
+        }
+        .carousel-arrow--right {
+            right: -1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .carousel-arrow--left {
+            left: -2rem;
+        }
+        .carousel-arrow--right {
+            right: -2rem;
+        }
+    }
+
+    /* ── Sidebar ── */
+    .categories-sidebar {
+        min-width: 160px;
+    }
+</style>
+
+<!-- ─── Client-side Carousel Logic ─── -->
+<script>
+    const allSlides = document.querySelectorAll<HTMLElement>(".wine-detail");
+    const allCenterBottleSlides = document.querySelectorAll<HTMLElement>(
+        "#center-bottle .center-bottle__slide",
+    );
+    const allPeekLeftSlides = document.querySelectorAll<HTMLElement>(
+        "#peek-left .peek-slide",
+    );
+    const allPeekRightSlides = document.querySelectorAll<HTMLElement>(
+        "#peek-right .peek-slide",
+    );
+    const categoryBtns =
+        document.querySelectorAll<HTMLElement>(".category-btn");
+    const prevBtn = document.getElementById("wine-prev");
+    const nextBtn = document.getElementById("wine-next");
+    const currentEl = document.getElementById("wine-current");
+    const totalEl = document.getElementById("wine-total");
+
+    // Build a list of wine indices for the current filter
+    let activeCategory = "todos";
+    let filteredIndices: number[] = [];
+    let currentPos = 0; // position within filteredIndices
+
+    function buildFilteredList() {
+        filteredIndices = [];
+        allSlides.forEach((slide, i) => {
+            const brand = slide.dataset.brand || "";
+            if (activeCategory === "todos" || brand === activeCategory) {
+                filteredIndices.push(i);
+            }
+        });
+    }
+
+    function getFilteredIndex(pos: number): number {
+        const len = filteredIndices.length;
+        return filteredIndices[((pos % len) + len) % len];
+    }
+
+    function showSlide(slides: NodeListOf<HTMLElement>, targetIndex: number) {
+        slides.forEach((slide) => {
+            const idx = Number(slide.dataset.wineIndex);
+            if (idx === targetIndex) {
+                slide.style.opacity = "1";
+                slide.style.position = "relative";
+                slide.setAttribute("aria-hidden", "false");
+            } else {
+                slide.style.opacity = "0";
+                slide.style.position = "absolute";
+                slide.setAttribute("aria-hidden", "true");
+            }
+        });
+    }
+
+    function update() {
+        const centerIdx = getFilteredIndex(currentPos);
+        const prevIdx = getFilteredIndex(currentPos - 1);
+        const nextIdx = getFilteredIndex(currentPos + 1);
+
+        // Center bottle (active wine)
+        showSlide(allCenterBottleSlides, centerIdx);
+        // Center details
+        showSlide(allSlides, centerIdx);
+        // Left peek = previous wine
+        showSlide(allPeekLeftSlides, prevIdx);
+        // Right peek = next wine
+        showSlide(allPeekRightSlides, nextIdx);
+
+        // Counter
+        if (currentEl)
+            currentEl.textContent = String(currentPos + 1).padStart(2, "0");
+        if (totalEl)
+            totalEl.textContent = String(filteredIndices.length).padStart(
+                2,
+                "0",
+            );
+    }
+
+    // Category filtering
+    categoryBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const cat = btn.dataset.category || "todos";
+            activeCategory = cat;
+            currentPos = 0;
+
+            categoryBtns.forEach((b) =>
+                b.setAttribute("aria-pressed", "false"),
+            );
+            // Set all buttons with same category
+            document
+                .querySelectorAll<HTMLElement>(
+                    `.category-btn[data-category="${cat}"]`,
+                )
+                .forEach((b) => {
+                    b.setAttribute("aria-pressed", "true");
+                });
+
+            buildFilteredList();
+            update();
+        });
+    });
+
+    // Navigation
+    prevBtn?.addEventListener("click", () => {
+        currentPos =
+            (currentPos - 1 + filteredIndices.length) % filteredIndices.length;
+        update();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+        currentPos = (currentPos + 1) % filteredIndices.length;
+        update();
+    });
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+            currentPos =
+                (currentPos - 1 + filteredIndices.length) %
+                filteredIndices.length;
+            update();
+        } else if (e.key === "ArrowRight") {
+            currentPos = (currentPos + 1) % filteredIndices.length;
+            update();
+        }
+    });
+
+    // Initialize
+    buildFilteredList();
+    update();
+</script>

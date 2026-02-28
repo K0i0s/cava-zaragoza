@@ -1,0 +1,906 @@
+---
+// ReservationSection.astro
+// Reservation page section – styled to match Cava Zaragoza design system.
+import { Image } from "astro:assets";
+import reservacionImg from "../assets/images/reservacion_imagen.webp";
+---
+
+<section
+    id="reservar"
+    aria-label="Reservaciones — Cava Zaragoza"
+    class="res-root"
+>
+    <!-- Grain texture overlay -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ── Split Layout ── -->
+    <div class="res-split">
+        <!-- LEFT: Image panel -->
+        <div class="res-image-panel" aria-hidden="true">
+            <Image
+                src={reservacionImg}
+                alt="Barricas en la cava de Cava Zaragoza, Valle de Guadalupe"
+                class="res-image"
+                loading="eager"
+                fetchpriority="high"
+                quality={85}
+            />
+            <!-- Gradient overlays -->
+            <div class="img-overlay-dark"></div>
+            <div class="img-overlay-gradient"></div>
+
+            <!-- Decorative gold corner accents -->
+            <div class="corner corner-tl" aria-hidden="true"></div>
+            <div class="corner corner-br" aria-hidden="true"></div>
+
+            <!-- Quote overlay -->
+            <blockquote class="img-quote reveal">
+                <p class="img-quote-text">
+                    "El vino es la poesía de la tierra."
+                </p>
+                <cite class="img-quote-cite">— Mario Soldati</cite>
+            </blockquote>
+
+            <!-- Brand mark -->
+            <div class="img-brand reveal reveal-delay-1">
+                <span class="brand-label">Cava Zaragoza</span>
+                <span class="brand-sub"
+                    >Valle de Guadalupe · Baja California</span
+                >
+            </div>
+        </div>
+
+        <!-- RIGHT: Form panel -->
+        <div class="res-form-panel">
+            <div class="res-form-inner">
+                <!-- Header -->
+                <header class="res-form-header reveal">
+                    <p class="section-label">Reservaciones</p>
+                    <div class="gold-divider"></div>
+                    <h1 class="res-headline">
+                        Vive la <em class="headline-em">Experiencia</em>
+                    </h1>
+                    <p class="res-subline">
+                        Compártenos tus datos y nos pondremos en contacto
+                        contigo para confirmar tu visita. Atendemos
+                        exclusivamente con reservación previa.
+                    </p>
+                </header>
+
+                <!-- Hours note -->
+                <div class="hours-badge reveal reveal-delay-1">
+                    <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <circle
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            stroke-width="1.8"></circle>
+                        <polyline
+                            points="12 6 12 12 16 14"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></polyline>
+                    </svg>
+                    <span
+                        >Vie 16–20h &nbsp;·&nbsp; Sáb 12–20h &nbsp;·&nbsp; Dom
+                        12–16h</span
+                    >
+                </div>
+
+                <!-- Form -->
+                <form
+                    id="reservation-form"
+                    class="res-form reveal reveal-delay-2"
+                    novalidate
+                >
+                    <!-- Email -->
+                    <div class="field-group">
+                        <label for="res-email" class="field-label">
+                            Correo electrónico
+                        </label>
+                        <div class="field-wrapper">
+                            <svg
+                                class="field-icon"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <rect
+                                    x="2"
+                                    y="4"
+                                    width="20"
+                                    height="16"
+                                    rx="2"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"></rect>
+                                <path
+                                    d="M2 7l10 7L22 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <input
+                                type="email"
+                                id="res-email"
+                                name="email"
+                                class="field-input"
+                                placeholder="tu@correo.com"
+                                autocomplete="email"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="field-group">
+                        <label for="res-name" class="field-label">
+                            Nombre completo
+                        </label>
+                        <div class="field-wrapper">
+                            <svg
+                                class="field-icon"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <circle
+                                    cx="12"
+                                    cy="8"
+                                    r="4"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"></circle>
+                                <path
+                                    d="M4 20c0-4 3.582-7 8-7s8 3 8 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"></path>
+                            </svg>
+                            <input
+                                type="text"
+                                id="res-name"
+                                name="name"
+                                class="field-input"
+                                placeholder="Tu nombre completo"
+                                autocomplete="name"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="field-group">
+                        <label for="res-message" class="field-label">
+                            Mensaje <span class="field-optional"
+                                >(número de personas, fecha preferida, etc.)</span
+                            >
+                        </label>
+                        <div class="field-wrapper field-wrapper--textarea">
+                            <svg
+                                class="field-icon field-icon--top"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <textarea
+                                id="res-message"
+                                name="message"
+                                class="field-input field-textarea"
+                                placeholder="Cuéntanos qué tipo de experiencia buscas…"
+                                rows="4"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" id="res-submit" class="btn-submit">
+                        <span class="btn-submit-text">Enviar Solicitud</span>
+                        <svg
+                            class="btn-submit-icon"
+                            width="15"
+                            height="15"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M22 2L11 13"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path
+                                d="M22 2L15 22l-4-9-9-4 20-7z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+
+                    <!-- Success / Error messages -->
+                    <div
+                        id="res-success"
+                        class="form-feedback form-feedback--success"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    >
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M20 6L9 17l-5-5"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
+                        ¡Solicitud enviada! Nos pondremos en contacto contigo pronto.
+                    </div>
+                    <div
+                        id="res-error"
+                        class="form-feedback form-feedback--error"
+                        role="alert"
+                        aria-live="polite"
+                        hidden
+                    >
+                        <svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                stroke-width="1.8"></circle>
+                            <line
+                                x1="12"
+                                y1="8"
+                                x2="12"
+                                y2="12"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"></line>
+                            <line
+                                x1="12"
+                                y1="16"
+                                x2="12.01"
+                                y2="16"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"></line>
+                        </svg>
+                        Ocurrió un error. Por favor intenta de nuevo o contáctanos
+                        directamente.
+                    </div>
+                </form>
+
+                <!-- Policy note -->
+                <p class="res-policy reveal reveal-delay-3">
+                    <svg
+                        width="11"
+                        height="11"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+                        <rect
+                            x="3"
+                            y="11"
+                            width="18"
+                            height="11"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="1.8"></rect>
+                        <path
+                            d="M7 11V7a5 5 0 0 1 10 0v4"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"></path>
+                    </svg>
+                    Visitas exclusivamente con reservación &nbsp;·&nbsp; Bebe con
+                    moderación
+                </p>
+            </div><!-- /.res-form-inner -->
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ── Root ── */
+    .res-root {
+        background-color: var(--color-dark-bg);
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+    }
+
+    /* ── Grain ── */
+    .grain {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 200px 200px;
+    }
+
+    /* ── Split ── */
+    .res-split {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+    }
+
+    @media (min-width: 900px) {
+        .res-split {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    /* ── Image Panel ── */
+    .res-image-panel {
+        position: relative;
+        overflow: hidden;
+        min-height: 380px;
+    }
+
+    @media (min-width: 900px) {
+        .res-image-panel {
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+    }
+
+    .res-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
+    /* Dark base overlay */
+    .img-overlay-dark {
+        position: absolute;
+        inset: 0;
+        background: rgba(18, 10, 12, 0.48);
+        z-index: 1;
+    }
+
+    /* Gradient overlay — darkens towards edges */
+    .img-overlay-gradient {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(
+                to right,
+                transparent 60%,
+                rgba(18, 10, 12, 0.85) 100%
+            ),
+            linear-gradient(to top, rgba(18, 10, 12, 0.8) 0%, transparent 55%),
+            linear-gradient(
+                to bottom,
+                rgba(18, 10, 12, 0.55) 0%,
+                transparent 30%
+            );
+        z-index: 2;
+    }
+
+    /* Decorative corner lines */
+    .corner {
+        position: absolute;
+        width: 2.4rem;
+        height: 2.4rem;
+        z-index: 5;
+        pointer-events: none;
+    }
+
+    .corner-tl {
+        top: 1.5rem;
+        left: 1.5rem;
+        border-top: 1.5px solid rgba(212, 175, 55, 0.55);
+        border-left: 1.5px solid rgba(212, 175, 55, 0.55);
+    }
+
+    .corner-br {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        border-bottom: 1.5px solid rgba(212, 175, 55, 0.55);
+        border-right: 1.5px solid rgba(212, 175, 55, 0.55);
+    }
+
+    /* Quote overlay */
+    .img-quote {
+        position: absolute;
+        bottom: 3.5rem;
+        left: 1.75rem;
+        right: 2rem;
+        z-index: 4;
+        margin: 0;
+    }
+
+    .img-quote-text {
+        font-family: var(--font-family-display);
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        font-style: italic;
+        font-weight: 500;
+        color: var(--color-cream);
+        line-height: 1.45;
+        margin: 0 0 0.6rem;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .img-quote-cite {
+        font-family: var(--font-family-body);
+        font-size: 0.68rem;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        opacity: 0.8;
+    }
+
+    /* Brand mark */
+    .img-brand {
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 4;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .brand-label {
+        display: block;
+        font-family: var(--font-family-display);
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 220, 0.85);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .brand-sub {
+        display: block;
+        font-family: var(--font-family-body);
+        font-size: 0.58rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        opacity: 0.7;
+        margin-top: 0.2rem;
+    }
+
+    /* ── Form Panel ── */
+    .res-form-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* center inner block horizontally */
+        justify-content: center; /* center inner block vertically */
+        background-color: var(--color-dark-bg);
+        position: relative;
+        padding: 5rem 2rem 4rem;
+    }
+
+    @media (min-width: 640px) {
+        .res-form-panel {
+            padding: 5rem 3rem 4rem;
+        }
+    }
+
+    @media (min-width: 900px) {
+        .res-form-panel {
+            /* fill the full column height to match the sticky image */
+            min-height: 100vh;
+            padding: 5rem 3rem;
+        }
+    }
+
+    /* Inner content wrapper — caps readability width and holds all form content */
+    .res-form-inner {
+        width: 100%;
+        max-width: 520px;
+    }
+
+    /* ── Form Header ── */
+    .res-form-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .res-headline {
+        font-family: var(--font-family-display);
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: var(--color-cream);
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        margin-bottom: 1rem;
+    }
+
+    .headline-em {
+        font-style: italic;
+        color: var(--color-gold);
+    }
+
+    .res-subline {
+        font-family: var(--font-family-body);
+        font-size: 0.875rem;
+        color: rgba(245, 245, 220, 0.5);
+        line-height: 1.75;
+        max-width: 38rem;
+    }
+
+    /* ── Section label + gold divider (shared tokens) ── */
+    .section-label {
+        font-family: var(--font-family-body);
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.35em;
+        text-transform: uppercase;
+        color: var(--color-gold);
+        margin-bottom: 0.75rem;
+    }
+
+    .gold-divider {
+        width: 2.5rem;
+        height: 1.5px;
+        background: var(--color-gold);
+        opacity: 0.55;
+        margin-bottom: 1.1rem;
+    }
+
+    /* ── Hours badge ── */
+    .hours-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-family-body);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(212, 175, 55, 0.65);
+        border: 1px solid rgba(212, 175, 55, 0.18);
+        padding: 0.45rem 0.85rem;
+        margin-bottom: 2rem;
+        align-self: flex-start;
+    }
+
+    /* ── Form ── */
+    .res-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.35rem;
+        width: 100%;
+        max-width: 480px;
+    }
+
+    /* Field group */
+    .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+    }
+
+    .field-label {
+        font-family: var(--font-family-body);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 220, 0.55);
+    }
+
+    .field-optional {
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        text-transform: none;
+        color: rgba(245, 245, 220, 0.3);
+        font-size: 0.63rem;
+    }
+
+    .field-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+    .field-wrapper--textarea {
+        align-items: flex-start;
+    }
+
+    .field-icon {
+        position: absolute;
+        left: 0.9rem;
+        color: rgba(212, 175, 55, 0.45);
+        pointer-events: none;
+        flex-shrink: 0;
+    }
+
+    .field-icon--top {
+        top: 0.85rem;
+    }
+
+    .field-input {
+        width: 100%;
+        background: rgba(245, 245, 220, 0.04);
+        border: 1px solid rgba(245, 245, 220, 0.1);
+        color: var(--color-cream);
+        font-family: var(--font-family-body);
+        font-size: 0.875rem;
+        font-weight: 300;
+        padding: 0.8rem 1rem 0.8rem 2.6rem;
+        outline: none;
+        transition:
+            border-color 0.25s ease,
+            background-color 0.25s ease,
+            box-shadow 0.25s ease;
+        border-radius: 0;
+        appearance: none;
+        -webkit-appearance: none;
+    }
+
+    .field-input::placeholder {
+        color: rgba(245, 245, 220, 0.22);
+    }
+
+    .field-input:focus {
+        border-color: rgba(212, 175, 55, 0.5);
+        background: rgba(212, 175, 55, 0.04);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.06);
+    }
+
+    .field-input:invalid:not(:placeholder-shown) {
+        border-color: rgba(180, 50, 50, 0.5);
+    }
+
+    .field-textarea {
+        resize: vertical;
+        min-height: 110px;
+        line-height: 1.65;
+        padding-top: 0.8rem;
+    }
+
+    /* ── Submit button ── */
+    .btn-submit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        width: 100%;
+        padding: 1rem 2rem;
+        background: var(--color-burgundy, #8b1538);
+        border: none;
+        color: rgba(245, 245, 220, 0.92);
+        font-family: var(--font-family-body);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+            background-color 0.3s ease,
+            transform 0.2s ease,
+            box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        margin-top: 0.25rem;
+    }
+
+    .btn-submit::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            135deg,
+            rgba(212, 175, 55, 0.12) 0%,
+            transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .btn-submit:hover {
+        background: #9e1a42;
+        box-shadow: 0 8px 32px rgba(139, 21, 56, 0.4);
+        transform: translateY(-1px);
+    }
+
+    .btn-submit:hover::before {
+        opacity: 1;
+    }
+
+    .btn-submit:active {
+        transform: translateY(0);
+    }
+
+    .btn-submit:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .btn-submit-icon {
+        transition: transform 0.25s ease;
+    }
+
+    .btn-submit:hover .btn-submit-icon {
+        transform: translateX(3px) translateY(-2px);
+    }
+
+    /* ── Feedback messages ── */
+    .form-feedback {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-family-body);
+        font-size: 0.8rem;
+        font-weight: 400;
+        line-height: 1.5;
+        padding: 0.8rem 1rem;
+        border-left: 2px solid;
+    }
+
+    .form-feedback[hidden] {
+        display: none;
+    }
+
+    .form-feedback--success {
+        color: rgba(160, 220, 160, 0.85);
+        border-color: rgba(100, 200, 100, 0.4);
+        background: rgba(100, 200, 100, 0.05);
+    }
+
+    .form-feedback--error {
+        color: rgba(220, 130, 130, 0.9);
+        border-color: rgba(200, 80, 80, 0.4);
+        background: rgba(200, 80, 80, 0.05);
+    }
+
+    /* ── Policy note ── */
+    .res-policy {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-family: var(--font-family-body);
+        font-size: 0.62rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 220, 0.2);
+        margin-top: 1.25rem;
+        flex-wrap: wrap;
+    }
+
+    /* ── Reveal animations (shared with Layout) ── */
+    .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+            opacity 0.7s ease,
+            transform 0.7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+        transition-delay: 0.1s;
+    }
+    .reveal-delay-2 {
+        transition-delay: 0.2s;
+    }
+    .reveal-delay-3 {
+        transition-delay: 0.32s;
+    }
+</style>
+
+<script>
+    // Form submission handler
+    const form = document.getElementById(
+        "reservation-form",
+    ) as HTMLFormElement | null;
+    const submitBtn = document.getElementById(
+        "res-submit",
+    ) as HTMLButtonElement | null;
+    const successEl = document.getElementById(
+        "res-success",
+    ) as HTMLElement | null;
+    const errorEl = document.getElementById("res-error") as HTMLElement | null;
+
+    if (form && submitBtn) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            // Optimistic UI: disable button while "sending"
+            submitBtn.disabled = true;
+            const originalText = (
+                submitBtn.querySelector(".btn-submit-text") as HTMLElement
+            ).textContent;
+            (
+                submitBtn.querySelector(".btn-submit-text") as HTMLElement
+            ).textContent = "Enviando…";
+
+            successEl && (successEl.hidden = true);
+            errorEl && (errorEl.hidden = true);
+
+            try {
+                const data = new FormData(form);
+                const body = {
+                    email: data.get("email"),
+                    name: data.get("name"),
+                    message: data.get("message"),
+                };
+
+                const res = await fetch("/api/reservar", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(body),
+                });
+
+                if (res.ok) {
+                    form.reset();
+                    successEl && (successEl.hidden = false);
+                } else {
+                    throw new Error("Server error");
+                }
+            } catch {
+                errorEl && (errorEl.hidden = false);
+            } finally {
+                submitBtn.disabled = false;
+                (
+                    submitBtn.querySelector(".btn-submit-text") as HTMLElement
+                ).textContent = originalText ?? "Enviar Solicitud";
+            }
+        });
+    }
+</script>

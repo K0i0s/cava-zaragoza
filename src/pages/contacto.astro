@@ -2,9 +2,18 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import ContactSection from "../components/ContactSection.astro";
+import SubscriptionSection from "../components/SubscriptionSection.astro";
 ---
 
-<Layout>
+<Layout
+    title="Contacto y Ubicación | Cava Zaragoza — Valle de Guadalupe"
+    description="Contacta a Cava Zaragoza. Visítanos en el Valle de Guadalupe, Baja California. Reservaciones con previo aviso. Teléfono, correo y ubicación."
+>
     <Navbar />
+    <main>
+        <ContactSection />
+        <SubscriptionSection />
+    </main>
     <Footer />
 </Layout>

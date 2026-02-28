@@ -1,0 +1,582 @@
+---
+import { Image } from "astro:assets";
+import donFlavio from "../assets/images/don-flavio.webp";
+---
+
+<section
+    id="historia"
+    aria-label="Historia de Cava Zaragoza"
+    class="history-root"
+>
+    <!-- Grain texture overlay -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- ── Hero Banner ── -->
+    <header class="history-hero reveal">
+        <p class="section-label">Nuestra Historia</p>
+        <div class="gold-divider"></div>
+        <h1 class="hero-headline">
+            Del Valle<br />
+            <em class="headline-italic">al Corazón</em>
+        </h1>
+        <p class="hero-byline">
+            Cava Zaragoza · Valle de Guadalupe, Baja California · Desde 2017
+        </p>
+    </header>
+
+    <!-- ── Main Feature Layout (magazine two-column) ── -->
+    <div class="magazine-container">
+        <!-- LEFT: Portrait column -->
+        <aside class="portrait-column reveal reveal-delay-1">
+            <div class="portrait-frame">
+                <div class="corner corner-tl" aria-hidden="true"></div>
+                <div class="corner corner-br" aria-hidden="true"></div>
+
+                <Image
+                    src={donFlavio}
+                    alt="Don Flavio Zaragoza, fundador de Cava Zaragoza, en su cava del Valle de Guadalupe"
+                    class="portrait-img"
+                    loading="lazy"
+                    width={520}
+                    height={680}
+                />
+
+                <!-- Caption ribbon -->
+                <figcaption class="portrait-caption">
+                    <span class="caption-name">Don Flavio Zaragoza</span>
+                    <span class="caption-role">Fundador &amp; Enólogo</span>
+                </figcaption>
+            </div>
+
+            <!-- Vintage year badge -->
+            <div class="vintage-badge" aria-label="Año de fundación">
+                <span class="badge-year">2017</span>
+                <span class="badge-label">Año de fundación</span>
+            </div>
+        </aside>
+
+        <!-- RIGHT: Narrative column -->
+        <article class="narrative-column">
+            <!-- Chapter 1: El sueño -->
+            <div class="chapter reveal reveal-delay-2">
+                <span class="chapter-tag">I</span>
+                <h2 class="chapter-title">El Sueño del Valle</h2>
+                <p class="chapter-body">
+                    El Sr. Zaragoza, originario del <strong
+                        >Valle de Guadalupe</strong
+                    >, soñaba con crear su propia marca de vinos con la esencia
+                    auténtica de su tierra natal. Un sueño que llevaba impreso
+                    en la memoria colectiva del valle: sus suelos volcánicos, su
+                    luz mediterránea, su viento del Pacífico.
+                </p>
+            </div>
+
+            <!-- Pull quote -->
+            <blockquote class="pull-quote reveal reveal-delay-3">
+                <span class="quote-mark">"</span>
+                <p class="quote-text">
+                    Experiences of a new world of wine,<br />
+                    <em>rooted in the oldest terroir of Mexico.</em>
+                </p>
+                <cite class="quote-cite">— Don Flavio Zaragoza</cite>
+            </blockquote>
+
+            <!-- Chapter 2: La Cava -->
+            <div class="chapter reveal reveal-delay-4">
+                <span class="chapter-tag">II</span>
+                <h2 class="chapter-title">La Cava en el Patio</h2>
+                <p class="chapter-body">
+                    Construyó la cava en el <strong
+                        >patio de su propia casa</strong
+                    >, dentro del pueblo, para guardar ese toque íntimo y de
+                    recuerdo que conecta cada botella con el paisaje del Valle.
+                    Un espacio artesanal donde la pasión y la precisión conviven
+                    bajo el mismo techo.
+                </p>
+            </div>
+
+            <!-- Chapter 3: Las primeras etiquetas -->
+            <div class="chapter reveal reveal-delay-5">
+                <span class="chapter-tag">III</span>
+                <h2 class="chapter-title">Las Primeras Etiquetas</h2>
+                <p class="chapter-body">
+                    Comenzó con cuatro etiquetas fundacionales, cada una
+                    concebida como una declaración de intenciones: mostrar que
+                    el Valle de Guadalupe podía producir vinos de carácter y
+                    elegancia internacional.
+                </p>
+
+                <!-- Etiquetas grid -->
+                <ul
+                    class="label-list"
+                    role="list"
+                    aria-label="Primeras etiquetas de Cava Zaragoza"
+                >
+                    <li class="label-item">
+                        <span class="label-dot" aria-hidden="true"></span>
+                        <div>
+                            <strong class="label-name">Reserva 2017</strong>
+                            <span class="label-varietal">Syrah / Grenache</span>
+                        </div>
+                    </li>
+                    <li class="label-item">
+                        <span class="label-dot" aria-hidden="true"></span>
+                        <div>
+                            <strong class="label-name">Gran Reserva 2019</strong
+                            >
+                            <span class="label-varietal"
+                                >Cabernet Sauvignon / Grenache</span
+                            >
+                        </div>
+                    </li>
+                    <li class="label-item">
+                        <span class="label-dot" aria-hidden="true"></span>
+                        <div>
+                            <strong class="label-name">Mezcla de Blancos</strong
+                            >
+                            <span class="label-varietal">Vino Joven</span>
+                        </div>
+                    </li>
+                    <li class="label-item">
+                        <span class="label-dot" aria-hidden="true"></span>
+                        <div>
+                            <strong class="label-name">Vino Rosado</strong>
+                            <span class="label-varietal">Vino Joven</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+    <!-- ── Philosophy Strip ── -->
+    <div class="philosophy-strip reveal">
+        <div class="philosophy-inner">
+            <span class="philosophy-ornament" aria-hidden="true">✦</span>
+            <p class="philosophy-text">
+                La orientación siempre ha sido una sola: producir vinos de
+                calidad que inviten a entrar en el mundo del vino con
+                autenticidad y pasión artesanal.
+            </p>
+            <span class="philosophy-ornament" aria-hidden="true">✦</span>
+        </div>
+    </div>
+
+    <!-- ── CTA Footer ── -->
+    <div class="history-cta-row reveal">
+        <a href="/vinos" class="btn-primary">
+            Descubre Nuestros Vinos
+            <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                aria-hidden="true"
+            >
+                <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+        </a>
+        <a href="/reservar" class="btn-outline"> Agenda tu Visita </a>
+    </div>
+</section>
+
+<style>
+    /* ── Root ── */
+    .history-root {
+        background-color: var(--color-dark-bg);
+        position: relative;
+        overflow: hidden;
+        padding-bottom: 6rem;
+    }
+
+    /* ── Grain overlay for warmth / magazine feel ── */
+    .grain {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.045;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+        background-repeat: repeat;
+        background-size: 200px 200px;
+    }
+
+    /* keep all children above grain */
+    .history-hero,
+    .magazine-container,
+    .philosophy-strip,
+    .history-cta-row {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* ── Hero Banner ── */
+    .history-hero {
+        text-align: center;
+        padding: 5rem 1.5rem 3.5rem;
+        background: linear-gradient(
+            180deg,
+            rgba(139, 21, 56, 0.08) 0%,
+            transparent 100%
+        );
+        border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .hero-headline {
+        font-family: var(--font-family-display);
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        font-weight: 800;
+        color: var(--color-cream);
+        line-height: 1;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.25rem;
+    }
+
+    .headline-italic {
+        font-style: italic;
+        color: var(--color-gold);
+    }
+
+    .hero-byline {
+        font-family: var(--font-family-body);
+        font-size: 0.72rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 220, 0.4);
+    }
+
+    /* ── Magazine Two-column layout ── */
+    .magazine-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        max-width: 72rem;
+        margin: 0 auto;
+        padding: 5rem 1.5rem 3rem;
+    }
+
+    @media (min-width: 900px) {
+        .magazine-container {
+            grid-template-columns: 380px 1fr;
+            gap: 4.5rem;
+            align-items: start;
+            padding: 6rem 2rem 4rem;
+        }
+    }
+
+    /* ── Portrait column ── */
+    .portrait-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    @media (min-width: 900px) {
+        .portrait-column {
+            position: sticky;
+            top: 5rem;
+            align-items: flex-start;
+        }
+    }
+
+    .portrait-frame {
+        position: relative;
+        width: 100%;
+        max-width: 380px;
+    }
+
+    /* Decorative corners */
+    .corner {
+        position: absolute;
+        width: 2.5rem;
+        height: 2.5rem;
+        z-index: 2;
+    }
+
+    .corner-tl {
+        top: -6px;
+        left: -6px;
+        border-top: 2px solid var(--color-gold);
+        border-left: 2px solid var(--color-gold);
+        opacity: 0.65;
+    }
+
+    .corner-br {
+        bottom: 3rem; /* above caption */
+        right: -6px;
+        border-bottom: 2px solid var(--color-gold);
+        border-right: 2px solid var(--color-gold);
+        opacity: 0.65;
+    }
+
+    .portrait-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+        filter: sepia(0.15) contrast(1.05);
+        transition: filter 0.5s ease;
+    }
+
+    .portrait-frame:hover .portrait-img {
+        filter: sepia(0) contrast(1.08);
+    }
+
+    /* Caption ribbon */
+    .portrait-caption {
+        background: linear-gradient(
+            to right,
+            var(--color-burgundy-deep),
+            var(--color-burgundy)
+        );
+        padding: 0.7rem 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        border-left: 3px solid var(--color-gold);
+    }
+
+    .caption-name {
+        font-family: var(--font-family-display);
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--color-gold-pale);
+        letter-spacing: 0.02em;
+    }
+
+    .caption-role {
+        font-family: var(--font-family-body);
+        font-size: 0.65rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(244, 228, 193, 0.6);
+    }
+
+    /* Vintage badge */
+    .vintage-badge {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.15rem;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        padding: 0.6rem 1.5rem;
+        background: rgba(212, 175, 55, 0.04);
+        width: max-content;
+    }
+
+    .badge-year {
+        font-family: var(--font-family-display);
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: var(--color-gold);
+        letter-spacing: -0.02em;
+        line-height: 1;
+    }
+
+    .badge-label {
+        font-family: var(--font-family-body);
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(245, 245, 220, 0.4);
+    }
+
+    /* ── Narrative column ── */
+    .narrative-column {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* ── Chapter block ── */
+    .chapter {
+        padding: 2rem 0;
+        border-bottom: 1px solid rgba(245, 245, 220, 0.06);
+        display: grid;
+        grid-template-columns: 2.5rem 1fr;
+        gap: 0 1.25rem;
+        align-items: start;
+    }
+
+    .chapter:last-child {
+        border-bottom: none;
+    }
+
+    .chapter-tag {
+        font-family: var(--font-family-display);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        color: var(--color-gold);
+        opacity: 0.5;
+        padding-top: 0.35rem;
+        text-align: center;
+    }
+
+    .chapter-title {
+        font-family: var(--font-family-display);
+        font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+        font-weight: 700;
+        color: var(--color-cream);
+        margin-bottom: 0.75rem;
+        grid-column: 2;
+    }
+
+    .chapter-body {
+        font-family: var(--font-family-body);
+        font-size: 0.975rem;
+        line-height: 1.85;
+        color: rgba(245, 245, 220, 0.68);
+        font-weight: 300;
+        grid-column: 2;
+    }
+
+    .chapter-body strong {
+        color: var(--color-cream);
+        font-weight: 500;
+    }
+
+    /* ── Pull quote ── */
+    .pull-quote {
+        margin: 0;
+        padding: 2rem 1.5rem 2rem 2rem;
+        border-left: 3px solid var(--color-gold);
+        background: linear-gradient(
+            to right,
+            rgba(212, 175, 55, 0.06),
+            transparent
+        );
+        position: relative;
+    }
+
+    .quote-mark {
+        font-family: var(--font-family-display);
+        font-size: 5rem;
+        line-height: 0;
+        color: var(--color-gold);
+        opacity: 0.2;
+        position: absolute;
+        top: 1.8rem;
+        left: 1rem;
+        font-weight: 900;
+        pointer-events: none;
+    }
+
+    .quote-text {
+        font-family: var(--font-family-display);
+        font-size: clamp(1.05rem, 2vw, 1.3rem);
+        font-style: italic;
+        color: var(--color-gold-pale);
+        line-height: 1.6;
+        padding-left: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .quote-cite {
+        font-family: var(--font-family-body);
+        font-size: 0.72rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: rgba(212, 175, 55, 0.55);
+        padding-left: 1.5rem;
+        display: block;
+    }
+
+    /* ── Label list ── */
+    .label-list {
+        list-style: none;
+        margin: 1.25rem 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        grid-column: 2;
+    }
+
+    .label-item {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+    }
+
+    .label-dot {
+        flex-shrink: 0;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--color-gold);
+        opacity: 0.6;
+    }
+
+    .label-name {
+        font-family: var(--font-family-body);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-cream);
+        margin-right: 0.5rem;
+    }
+
+    .label-varietal {
+        font-family: var(--font-family-body);
+        font-size: 0.78rem;
+        color: rgba(245, 245, 220, 0.45);
+        font-style: italic;
+    }
+
+    /* ── Philosophy strip ── */
+    .philosophy-strip {
+        background: linear-gradient(
+            to right,
+            var(--color-burgundy-deep),
+            rgba(94, 14, 38, 0.85),
+            var(--color-burgundy-deep)
+        );
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        padding: 3rem 1.5rem;
+        text-align: center;
+        margin: 0;
+    }
+
+    .philosophy-inner {
+        max-width: 44rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .philosophy-ornament {
+        font-size: 0.65rem;
+        color: var(--color-gold);
+        opacity: 0.5;
+        flex-shrink: 0;
+        letter-spacing: 0;
+    }
+
+    .philosophy-text {
+        font-family: var(--font-family-display);
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        font-style: italic;
+        color: var(--color-gold-pale);
+        line-height: 1.7;
+        opacity: 0.9;
+    }
+
+    /* ── CTA row ── */
+    .history-cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        padding: 4rem 1.5rem 0;
+    }
+</style>

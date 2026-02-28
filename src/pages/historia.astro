@@ -2,9 +2,16 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
+import HistorySection from "../components/HistorySection.astro";
 ---
 
-<Layout>
+<Layout
+    title="Historia | Cava Zaragoza — Valle de Guadalupe"
+    description="Conoce la historia de Don Flavio Zaragoza y cómo construyó su cava artesanal en el Valle de Guadalupe, Baja California. Desde un sueño hasta cuatro etiquetas de vinos de carácter."
+>
     <Navbar />
+    <main>
+        <HistorySection />
+    </main>
     <Footer />
 </Layout>
