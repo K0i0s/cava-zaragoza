@@ -10,7 +10,7 @@ export const CONTACT_INFO: {
         "reservaciones@cavazaragoza.com.mx",
         "cavazaragoza@gmail.com",
     ],
-    address: "Calle Ágata, Col. 14 de Febrero, Valle de Guadalupe, Baja California, C.P. 22750, México",
+    address: "Calle Ágata, Artículo Ciento Quince, Valle de Guadalupe, Baja California, C.P. 22756, México",
     hours: "Vie 16:00–20:00 · Sáb 12:00–20:00 · Dom 12:00–16:00",
     socials: {
         whatsapp: "https://wa.me/526642178375",

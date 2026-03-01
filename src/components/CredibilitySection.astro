@@ -7,50 +7,47 @@
 const googleReviews = [
     {
         id: 'gr-1',
-        author: 'Mariana R.',
+        author: 'Christian Ramon Perez Sanchez',
         stars: 5,
-        date: 'Enero 2024',
-        text: 'Una experiencia increíble. Los vinos tienen un carácter único que no encuentras en ningún otro lugar del Valle. Don Zaragoza es un anfitrión extraordinario.',
-        source: 'google',
-        avatar: 'M',
-    },
-    {
-        id: 'gr-2',
-        author: 'Carlos V.',
-        stars: 5,
-        date: 'Noviembre 2023',
-        text: 'El Syrah/Grenache Reserva es una obra de arte. Complejidad, elegancia y un final interminable. Definitivamente vale la pena el viaje a Valle de Guadalupe.',
+        date: '2023',
+        text: 'Buen servicio, ambiente familiar, excelente degustación de vinos.',
         source: 'google',
         avatar: 'C',
     },
     {
-        id: 'gr-3',
-        author: 'Sofía L.',
+        id: 'gr-2',
+        author: 'Edgar Ramirez',
         stars: 5,
-        date: 'Octubre 2023',
-        text: 'La Mezcla de Blancos es perfecta para el clima del Valle. Fresca, mineral y muy versátil. Volveré a comprar sin duda.',
+        date: '2025',
+        text: 'Atención excelente de su propietario Flavio. No se lo pierdan.',
         source: 'google',
-        avatar: 'S',
+        avatar: 'E',
+    },
+    {
+        id: 'gr-3',
+        author: 'Miguel Salvador Sanchez Vargas',
+        stars: 5,
+        date: '2025',
+        text: 'Excelentes vinos, lugar perfecto para un evento privado al aire libre.',
+        source: 'google',
+        avatar: 'M',
     },
 ];
 
 const magazineReviews = [
     {
         id: 'mag-1',
-        publication: 'Revista Cava',
-        quote: 'Una propuesta honesta y artesanal que refleja con fidelidad el espíritu del Valle de Guadalupe. Sus vinos muestran una identidad clara y una técnica depurada.',
-        rating: '92 puntos',
-        year: '2023',
-        // Sello/logo placeholder — reemplazar con imagen real
-        logoPlaceholder: true,
+        publication: 'Feliberto Ornelas - Guia Local',
+        quote: 'Muy amable el Sr. Flavio Zaragoza por recibirnos y explicar ampliamente el concepto y derivados de su vinicola. El ambiente es muy relajado y se puede disfrutar de una buena estancia en el lugar.',
+        stars: 5,
+        year: '2025',
     },
     {
         id: 'mag-2',
-        publication: 'Guía de Vinos de Baja California',
-        quote: 'Cava Zaragoza destaca por su autenticidad y su compromiso con la calidad artesanal. Una bodega boutique que merece toda la atención.',
-        rating: 'Mención Especial',
-        year: '2022',
-        logoPlaceholder: true,
+        publication: 'Cesar Murillo - Guia Local',
+        quote: 'De los mejores vinos de la región, buen lugar con atención personal sin tanto bullicio de gente si buscas un lugar acogedor casi para ti solo este es el indicado.',
+        stars: 5,
+        year: '2025',
     },
 ];
 ---
@@ -83,17 +80,17 @@ const magazineReviews = [
             {
                 magazineReviews.map((mag) => (
                     <div class="award-card" aria-label={`Reconocimiento de ${mag.publication}`}>
-                        <!-- Logo placeholder -->
-                        <div class="award-logo-placeholder" aria-label={`Logo de ${mag.publication} — próximamente`}>
-                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                                <circle cx="14" cy="14" r="12" stroke="rgba(212,175,55,0.4)" stroke-width="1.2" />
-                                <path d="M14 5l1.6 5h5.2l-4.2 3.1 1.6 5-4.2-3.1-4.2 3.1 1.6-5L7.2 10h5.2z" fill="rgba(212,175,55,0.5)" />
-                            </svg>
-                            <span class="logo-placeholder-text">{mag.publication}</span>
+                        <!-- Star rating -->
+                        <div class="award-stars" role="img" aria-label={`${mag.stars} estrellas`}>
+                            {Array.from({ length: mag.stars }).map(() => (
+                                <svg width="16" height="16" viewBox="0 0 12 12" fill="var(--color-gold)" aria-hidden="true">
+                                    <path d="M6 1l1.2 3.6H11L8.1 6.8l1.1 3.6L6 8.4l-3.2 2 1.1-3.6L1 4.6h3.8z" />
+                                </svg>
+                            ))}
                         </div>
 
                         <div class="award-content">
-                            <span class="award-rating">{mag.rating}</span>
+                            <span class="award-publication">{mag.publication}</span>
                             <span class="award-year">{mag.year}</span>
                         </div>
 
@@ -116,7 +113,7 @@ const magazineReviews = [
                 </svg>
                 <span>Reseñas de Google</span>
                 <!-- Stars -->
-                <span class="google-rating">4.9 ★★★★★</span>
+                <span class="google-rating">4.7 ★★★★★</span>
             </div>
             <div class="divider-line"></div>
         </div>
@@ -127,7 +124,7 @@ const magazineReviews = [
                 googleReviews.map((review, i) => (
                     <div class={`review-card reveal reveal-delay-${i + 1}`} aria-label={`Reseña de ${review.author}`}>
                         <!-- Stars -->
-                        <div class="review-stars" aria-label={`${review.stars} estrellas`}>
+                        <div class="review-stars" role="img" aria-label={`${review.stars} estrellas`}>
                             {Array.from({ length: review.stars }).map(() => (
                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="var(--color-gold)" aria-hidden="true">
                                     <path d="M6 1l1.2 3.6H11L8.1 6.8l1.1 3.6L6 8.4l-3.2 2 1.1-3.6L1 4.6h3.8z" />
@@ -253,19 +250,10 @@ const magazineReviews = [
         opacity: 0.5;
     }
 
-    .award-logo-placeholder {
+    .award-stars {
         display: flex;
-        align-items: center;
-        gap: 0.6rem;
+        gap: 3px;
         margin-bottom: 1rem;
-    }
-
-    .logo-placeholder-text {
-        font-family: var(--font-family-body);
-        font-size: 0.7rem;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(212, 175, 55, 0.6);
     }
 
     .award-content {
@@ -275,11 +263,12 @@ const magazineReviews = [
         margin-bottom: 0.75rem;
     }
 
-    .award-rating {
-        font-family: var(--font-family-display);
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--color-gold);
+    .award-publication {
+        font-family: var(--font-family-body);
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--color-cream);
+        letter-spacing: 0.03em;
     }
 
     .award-year {

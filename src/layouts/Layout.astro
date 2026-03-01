@@ -11,7 +11,7 @@ export interface Props {
 const {
     title = "Cava Zaragoza | Vinos Artesanales del Valle de Guadalupe",
     description = "Descubre vinos artesanales de calidad en Valle de Guadalupe. Cava boutique con Malbec, Cabernet Sauvignon, Syrah y más. Visítanos en Ensenada, Baja California.",
-    image = "/og-image.jpg",
+    image = "/og-image.png",
     url = "https://cavazaragoza.com.mx",
 } = Astro.props;
 
@@ -55,7 +55,7 @@ const schemaLocal = {
     priceRange: "$$",
     geo: {
         "@type": "GeoCoordinates",
-        latitude: "32.0823S52084862826",
+        latitude: "32.082352084862826",
         longitude: "-116.57464717017713",
     },
 };
@@ -87,6 +87,7 @@ const schemaLocal = {
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="cavazaragoza.com.mx" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={image} />
@@ -95,7 +96,7 @@ const schemaLocal = {
         <meta name="theme-color" content="#120A0C" />
 
         <!-- Favicon -->
-        <link rel="icon" type="image/webp" href="/logo-icon.webp" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
         <!-- Font Preloads -->
         <link

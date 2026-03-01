@@ -36,7 +36,8 @@ import donFlavio from "../assets/images/don-flavio.webp";
                     src={donFlavio}
                     alt="Don Flavio Zaragoza, fundador de Cava Zaragoza, en su cava del Valle de Guadalupe"
                     class="portrait-img"
-                    loading="lazy"
+                    loading="eager"
+                    fetchpriority="high"
                     width={520}
                     height={680}
                 />
@@ -44,13 +45,13 @@ import donFlavio from "../assets/images/don-flavio.webp";
                 <!-- Caption ribbon -->
                 <figcaption class="portrait-caption">
                     <span class="caption-name">Don Flavio Zaragoza</span>
-                    <span class="caption-role">Fundador &amp; Enólogo</span>
+                    <span class="caption-role">Fundador</span>
                 </figcaption>
             </div>
 
             <!-- Vintage year badge -->
             <div class="vintage-badge" aria-label="Año de fundación">
-                <span class="badge-year">2017</span>
+                <span class="badge-year">2021</span>
                 <span class="badge-label">Año de fundación</span>
             </div>
         </aside>
@@ -70,16 +71,6 @@ import donFlavio from "../assets/images/don-flavio.webp";
                     luz mediterránea, su viento del Pacífico.
                 </p>
             </div>
-
-            <!-- Pull quote -->
-            <blockquote class="pull-quote reveal reveal-delay-3">
-                <span class="quote-mark">"</span>
-                <p class="quote-text">
-                    Experiences of a new world of wine,<br />
-                    <em>rooted in the oldest terroir of Mexico.</em>
-                </p>
-                <cite class="quote-cite">— Don Flavio Zaragoza</cite>
-            </blockquote>
 
             <!-- Chapter 2: La Cava -->
             <div class="chapter reveal reveal-delay-4">
@@ -164,7 +155,7 @@ import donFlavio from "../assets/images/don-flavio.webp";
 
     <!-- ── CTA Footer ── -->
     <div class="history-cta-row reveal">
-        <a href="/vinos" class="btn-primary">
+        <a href="/vinos" class="btn-primary min-w-[320px]">
             Descubre Nuestros Vinos
             <svg
                 width="16"
@@ -181,7 +172,9 @@ import donFlavio from "../assets/images/don-flavio.webp";
                     stroke-linejoin="round"></path>
             </svg>
         </a>
-        <a href="/reservar" class="btn-outline"> Agenda tu Visita </a>
+        <a href="/reservar" class="btn-outline justify-center min-w-[320px]">
+            Agenda tu Visita
+        </a>
     </div>
 </section>
 
@@ -369,7 +362,8 @@ import donFlavio from "../assets/images/don-flavio.webp";
         border: 1px solid rgba(212, 175, 55, 0.25);
         padding: 0.6rem 1.5rem;
         background: rgba(212, 175, 55, 0.04);
-        width: max-content;
+        width: 100%;
+        max-width: 380px;
     }
 
     .badge-year {

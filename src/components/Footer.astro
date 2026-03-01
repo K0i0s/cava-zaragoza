@@ -1,4 +1,5 @@
 ---
+import { navLinks } from "../lib/navigation";
 import { Image } from "astro:assets";
 import logo from "../assets/images/cava-logo.webp";
 ---
@@ -13,7 +14,7 @@ import logo from "../assets/images/cava-logo.webp";
             <!-- Brand Column -->
             <div class="md:col-span-1">
                 <a
-                    href="#inicio"
+                    href="/"
                     class="inline-flex items-center gap-3 mb-4 group"
                     aria-label="Cava Zaragoza - Inicio"
                 >
@@ -27,7 +28,7 @@ import logo from "../assets/images/cava-logo.webp";
                     />
                 </a>
                 <p
-                    class="text-sm text-cream/50 leading-relaxed max-w-xs mt-4"
+                    class="text-sm text-cream/60 leading-relaxed max-w-xs mt-4"
                     style="font-family: var(--font-family-body); font-weight: 300;"
                 >
                     Vinos artesanales del Valle de Guadalupe, Baja California.
@@ -90,17 +91,7 @@ import logo from "../assets/images/cava-logo.webp";
                 </h3>
                 <ul class="space-y-3 list-none m-0 p-0">
                     {
-                        [
-                            { href: "#inicio", label: "Inicio" },
-                            { href: "#historia", label: "Nuestra Historia" },
-                            { href: "#vinos", label: "Nuestros Vinos" },
-                            {
-                                href: "#reconocimientos",
-                                label: "Reconocimientos",
-                            },
-                            { href: "#terruno", label: "El Valle" },
-                            { href: "#contacto", label: "Contacto" },
-                        ].map((link) => (
+                        navLinks.map((link) => (
                             <li>
                                 <a
                                     href={link.href}
@@ -157,14 +148,14 @@ import logo from "../assets/images/cava-logo.webp";
             class="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"
         >
             <p
-                class="text-xs text-cream/30"
+                class="text-xs text-cream/50"
                 style="font-family: var(--font-family-body);"
             >
                 &copy; {new Date().getFullYear()} Cava Zaragoza. Todos los derechos
                 reservados.
             </p>
             <p
-                class="text-xs text-cream/20"
+                class="text-xs text-cream/50"
                 style="font-family: var(--font-family-body);"
             >
                 Valle de Guadalupe · Ensenada · Baja California · México

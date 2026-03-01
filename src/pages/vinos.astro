@@ -553,6 +553,29 @@ const wines = [
         transition: opacity 0.5s ease;
     }
 
+    /* ── Fade-in keyframe for center bottle ── */
+    @keyframes fadeInBottle {
+        0% {
+            opacity: 0;
+            transform: scale(0.94);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes fadeInDetails {
+        0% {
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
     /* ── Center Bottle (active wine) ── */
     .center-bottle {
         position: relative;
@@ -573,7 +596,11 @@ const wines = [
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.4s ease-out;
+    }
+
+    .center-bottle__slide.is-animating-in {
+        animation: fadeInBottle 0.5s ease-out forwards;
     }
 
     .center-bottle__img {
@@ -621,8 +648,12 @@ const wines = [
         display: flex;
         flex-direction: column;
         align-items: center;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.4s ease-out;
         width: 100%;
+    }
+
+    .wine-detail.is-animating-in {
+        animation: fadeInDetails 0.5s ease-out forwards;
     }
 
     .wine-detail__color-badge {
@@ -715,7 +746,7 @@ const wines = [
         border: 1px solid rgba(245, 245, 220, 0.2);
         background: rgba(18, 10, 12, 0.5);
         color: rgba(245, 245, 220, 0.6);
-        display: flex;
+        display: none; /* hidden on mobile */
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -725,6 +756,12 @@ const wines = [
             background-color 0.3s ease,
             transform 0.3s ease;
         backdrop-filter: blur(4px);
+    }
+
+    @media (min-width: 768px) {
+        .carousel-arrow {
+            display: flex; /* show arrows on desktop */
+        }
     }
 
     .carousel-arrow:hover {
@@ -760,6 +797,17 @@ const wines = [
         }
         .carousel-arrow--right {
             right: -2rem;
+        }
+    }
+
+    /* ── Mobile swipe cursor hint ── */
+    @media (max-width: 767px) {
+        .carousel-track {
+            cursor: grab;
+            touch-action: pan-y pinch-zoom; /* allow vertical scroll, capture horizontal */
+        }
+        .carousel-track:active {
+            cursor: grabbing;
         }
     }
 
@@ -808,13 +856,26 @@ const wines = [
         return filteredIndices[((pos % len) + len) % len];
     }
 
-    function showSlide(slides: NodeListOf<HTMLElement>, targetIndex: number) {
+    function showSlide(
+        slides: NodeListOf<HTMLElement>,
+        targetIndex: number,
+        animate: boolean = false,
+        animClass: string = "",
+    ) {
         slides.forEach((slide) => {
             const idx = Number(slide.dataset.wineIndex);
+            // Remove any previous animation class
+            if (animClass) slide.classList.remove(animClass);
+
             if (idx === targetIndex) {
                 slide.style.opacity = "1";
                 slide.style.position = "relative";
                 slide.setAttribute("aria-hidden", "false");
+                if (animate && animClass) {
+                    // Force reflow so the animation restarts
+                    void slide.offsetWidth;
+                    slide.classList.add(animClass);
+                }
             } else {
                 slide.style.opacity = "0";
                 slide.style.position = "absolute";
@@ -823,16 +884,25 @@ const wines = [
         });
     }
 
+    let isFirstRender = true;
+
     function update() {
         const centerIdx = getFilteredIndex(currentPos);
         const prevIdx = getFilteredIndex(currentPos - 1);
         const nextIdx = getFilteredIndex(currentPos + 1);
 
-        // Center bottle (active wine)
-        showSlide(allCenterBottleSlides, centerIdx);
-        // Center details
-        showSlide(allSlides, centerIdx);
-        // Left peek = previous wine
+        const shouldAnimate = !isFirstRender;
+
+        // Center bottle with fade-in animation
+        showSlide(
+            allCenterBottleSlides,
+            centerIdx,
+            shouldAnimate,
+            "is-animating-in",
+        );
+        // Center details with fade-in animation
+        showSlide(allSlides, centerIdx, shouldAnimate, "is-animating-in");
+        // Left peek = previous wine (no animation, just crossfade)
         showSlide(allPeekLeftSlides, prevIdx);
         // Right peek = next wine
         showSlide(allPeekRightSlides, nextIdx);
@@ -845,6 +915,8 @@ const wines = [
                 2,
                 "0",
             );
+
+        isFirstRender = false;
     }
 
     // Category filtering
@@ -895,6 +967,62 @@ const wines = [
             update();
         }
     });
+
+    // ── Touch / pointer swipe support for mobile ──
+    const carouselTrack =
+        document.querySelector<HTMLElement>(".carousel-track");
+    if (carouselTrack) {
+        let pointerStartX = 0;
+        let pointerStartY = 0;
+        let isSwiping = false;
+        const SWIPE_THRESHOLD = 40;
+
+        carouselTrack.addEventListener(
+            "pointerdown",
+            (e: PointerEvent) => {
+                pointerStartX = e.clientX;
+                pointerStartY = e.clientY;
+                isSwiping = true;
+            },
+            { passive: true },
+        );
+
+        carouselTrack.addEventListener(
+            "pointerup",
+            (e: PointerEvent) => {
+                if (!isSwiping) return;
+                isSwiping = false;
+                const dx = e.clientX - pointerStartX;
+                const dy = e.clientY - pointerStartY;
+
+                // Only trigger if horizontal movement is dominant
+                if (
+                    Math.abs(dx) > SWIPE_THRESHOLD &&
+                    Math.abs(dx) > Math.abs(dy)
+                ) {
+                    if (dx < 0) {
+                        // Swiped left → next
+                        currentPos = (currentPos + 1) % filteredIndices.length;
+                    } else {
+                        // Swiped right → previous
+                        currentPos =
+                            (currentPos - 1 + filteredIndices.length) %
+                            filteredIndices.length;
+                    }
+                    update();
+                }
+            },
+            { passive: true },
+        );
+
+        carouselTrack.addEventListener(
+            "pointercancel",
+            () => {
+                isSwiping = false;
+            },
+            { passive: true },
+        );
+    }
 
     // Initialize
     buildFilteredList();
