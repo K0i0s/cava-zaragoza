@@ -1,46 +1,87 @@
-# Astro Starter Kit: Basics
+# 🍷 Cava Zaragoza — Landing Page
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Landing page for **Cava Zaragoza**, a boutique winery in Valle de Guadalupe, Baja California, México. Built with [Astro](https://astro.build) and [Tailwind CSS v4](https://tailwindcss.com).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🔗 **[cavazaragoza.com.mx](https://cavazaragoza.com.mx)**
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tech Stack
+
+| Layer     | Technology                       |
+| :-------- | :------------------------------- |
+| Framework | Astro 5                          |
+| Styling   | Tailwind CSS 4 (Vite plugin)     |
+| Icons     | Lucide (Astro integration)       |
+| Images    | Sharp (Astro image optimization) |
+| Fonts     | Playfair Display · Work Sans     |
+
+## Project Structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── assets/          # Optimized images (processed by Astro)
+├── components/      # Astro UI components
+│   ├── Navbar.astro
+│   ├── HeroSection.astro
+│   ├── FeaturedWinesSection.astro
+│   ├── CredibilitySection.astro
+│   ├── HistorySection.astro
+│   ├── ContactSection.astro
+│   ├── ReservationSection.astro
+│   ├── SubscriptionSection.astro
+│   └── Footer.astro
+├── layouts/
+│   └── Layout.astro  # Base HTML layout with SEO & Schema.org
+├── lib/
+│   ├── contact.ts     # Centralized contact info
+│   └── navigation.ts  # Shared nav link definitions
+├── pages/
+│   ├── index.astro     # Inicio (Home)
+│   ├── historia.astro  # Historia (History)
+│   ├── vinos.astro     # Nuestros Vinos (Wines catalog)
+│   ├── contacto.astro  # Contacto (Contact)
+│   └── reservar.astro  # Reservar (Reservations)
+└── styles/
+    └── global.css       # Global styles & design tokens
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Getting Started
 
-## 🧞 Commands
+### Prerequisites
 
-All commands are run from the root of the project, from a terminal:
+- [Node.js](https://nodejs.org) (v18+)
+- [pnpm](https://pnpm.io)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+### Install & Run
 
-## 👀 Want to learn more?
+```sh
+# Install dependencies
+pnpm install
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Start dev server at localhost:4321
+pnpm dev
+```
+
+### Commands
+
+| Command              | Action                                           |
+| :------------------- | :----------------------------------------------- |
+| `pnpm install`       | Install dependencies                             |
+| `pnpm dev`           | Start local dev server at `localhost:4321`        |
+| `pnpm build`         | Build production site to `./dist/`               |
+| `pnpm preview`       | Preview production build locally                 |
+| `pnpm astro ...`     | Run Astro CLI commands (`add`, `check`, etc.)    |
+
+## SEO
+
+The site includes:
+
+- Open Graph & Twitter Card meta tags
+- Schema.org JSON-LD structured data (`Winery` type)
+- Canonical URLs, keywords, and robots directives
+- `robots.txt` and optimized OG image
+
+## License
+
+Private — all rights reserved.
