@@ -481,7 +481,7 @@ const wines = [
         transition: opacity 0.5s ease;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 820px) {
         .peek-bottle {
             display: flex;
         }
@@ -646,14 +646,15 @@ const wines = [
 
     .wine-detail__name {
         font-family: var(--font-family-display);
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         font-weight: 700;
+        text-align: center;
         color: var(--color-cream);
         margin: 0 0 0.5rem;
         line-height: 1.2;
     }
 
-    @media (min-width: 640px) {
+    @media (min-width: 1024px) {
         .wine-detail__name {
             font-size: 2.25rem;
         }
@@ -661,12 +662,18 @@ const wines = [
 
     .wine-detail__grapes {
         font-family: var(--font-family-body);
-        font-size: 0.8rem;
+        font-size: 0.6rem;
         font-weight: 400;
         letter-spacing: 0.12em;
         text-transform: uppercase;
         color: rgba(245, 245, 220, 0.55);
         margin: 0 0 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+        .wine-detail__grapes {
+            font-size: 0.75rem;
+        }
     }
 
     .wine-detail__divider {
@@ -683,12 +690,18 @@ const wines = [
 
     .wine-detail__desc {
         font-family: var(--font-family-body);
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         font-weight: 300;
         line-height: 1.75;
         color: rgba(245, 245, 220, 0.7);
         max-width: 380px;
         margin: 0;
+    }
+
+    @media (min-width: 768px) {
+        .wine-detail__desc {
+            font-size: 0.9rem;
+        }
     }
 
     /* ── Wine Counter ── */
@@ -715,13 +728,13 @@ const wines = [
         top: 50%;
         transform: translateY(-50%);
         z-index: 20;
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         border: 1px solid rgba(245, 245, 220, 0.2);
-        background: rgba(18, 10, 12, 0.5);
+        background: rgba(18, 10, 12, 0.6);
         color: rgba(245, 245, 220, 0.6);
-        display: none; /* hidden on mobile */
+        display: flex; /* visible on all screen sizes */
         align-items: center;
         justify-content: center;
         cursor: pointer;
@@ -735,7 +748,8 @@ const wines = [
 
     @media (min-width: 768px) {
         .carousel-arrow {
-            display: flex; /* show arrows on desktop */
+            width: 44px;
+            height: 44px;
         }
     }
 
@@ -750,11 +764,11 @@ const wines = [
     }
 
     .carousel-arrow--left {
-        left: -0.5rem;
+        left: -0.25rem;
     }
 
     .carousel-arrow--right {
-        right: -0.5rem;
+        right: -0.25rem;
     }
 
     @media (min-width: 768px) {
