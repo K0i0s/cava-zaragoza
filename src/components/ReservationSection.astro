@@ -1,6 +1,4 @@
 ---
-// ReservationSection.astro
-// Reservation page section – styled to match Cava Zaragoza design system.
 import { Image } from "astro:assets";
 import reservacionImg from "../assets/images/reservacion_imagen.webp";
 ---
@@ -23,7 +21,10 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                 class="res-image"
                 loading="eager"
                 fetchpriority="high"
+                width={1440}
+                height={1592}
                 quality={85}
+                layout="constrained"
             />
             <!-- Gradient overlays -->
             <div class="img-overlay-dark"></div>

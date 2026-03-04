@@ -753,14 +753,27 @@ const wines = [
         }
     }
 
-    .carousel-arrow:hover {
-        border-color: var(--color-gold);
-        color: var(--color-gold);
-        background: rgba(212, 175, 55, 0.08);
+    /* Hover only on real pointer devices — avoids stuck glow on touch */
+    @media (hover: hover) {
+        .carousel-arrow:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .carousel-arrow:active {
+            transform: translateY(-50%) scale(0.92);
+        }
     }
 
-    .carousel-arrow:active {
-        transform: translateY(-50%) scale(0.92);
+    /* Touch devices: brief scale-down on tap, immediately reverts */
+    @media (hover: none) {
+        .carousel-arrow:active {
+            transform: translateY(-50%) scale(0.92);
+            border-color: rgba(245, 245, 220, 0.2);
+            background: rgba(18, 10, 12, 0.6);
+            color: rgba(245, 245, 220, 0.6);
+        }
     }
 
     .carousel-arrow--left {
@@ -1013,7 +1026,45 @@ const wines = [
         );
     }
 
+    // ── Wine IDs in same order as the wines array ──
+    const wineIds = [
+        "malbec",
+        "tempranillo",
+        "cabernet-sauvignon",
+        "mezcla-tintos",
+        "erick-daniel",
+        "cabernet-sauvignon-grenache",
+        "yocelin-rose",
+        "sauvignon-blanc-chardonnay",
+    ];
+
     // Initialize
     buildFilteredList();
+
+    // ── Deep-link: ?vino=<id> → jump to that wine ──
+    const params = new URLSearchParams(window.location.search);
+    const vinoParam = params.get("vino");
+    if (vinoParam) {
+        const targetGlobalIndex = wineIds.indexOf(vinoParam);
+        if (targetGlobalIndex !== -1) {
+            // Find its position within the current filtered list
+            const posInFiltered = filteredIndices.indexOf(targetGlobalIndex);
+            if (posInFiltered !== -1) {
+                currentPos = posInFiltered;
+            }
+        }
+    }
+
     update();
+
+    // Scroll to the wines showcase section if coming from a deep link
+    if (vinoParam) {
+        const showcase = document.getElementById("wines-showcase");
+        if (showcase) {
+            // Small delay to let the page layout settle
+            setTimeout(() => {
+                showcase.scrollIntoView({ behavior: "smooth", block: "start" });
+            }, 300);
+        }
+    }
 </script>
