@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import cavaLogo from "../assets/images/cava-logo.webp";
 import heroDesktop from "../assets/images/hero_desktop.webp";
 import heroDesktop2 from "../assets/images/hero_image_desktop_2.webp";
 import heroMobile from "../assets/images/hero_mobile.webp";
@@ -116,16 +117,15 @@ const slides = [
         </div>
 
         <!-- Main Headline -->
-        <h1
-            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-cream leading-tight mb-6 animate-fade-up"
-            style="font-family: var(--font-family-display); animation-delay: 0.3s; text-shadow: 0 2px 30px rgba(0,0,0,0.5);"
-        >
-            Vinos Artesanales<br />
-            <em class="not-italic" style="color: var(--color-gold);"
-                >del Valle</em
-            >
-        </h1>
-
+        <Image
+            src={cavaLogo}
+            alt="Cava Zaragoza"
+            loading="eager"
+            fetchpriority="high"
+            width={1536}
+            height={1024}
+            layout="constrained"
+        />
         <!-- Subheadline -->
         <p
             class="text-base sm:text-lg md:text-xl text-cream/80 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up"

@@ -2,7 +2,6 @@
 /**
  * FeaturedWinesSection — Vitrina minimalista de los 3 vinos reconocidos por revista.
  * Diseño: botellas a pantalla completa con fondo transparente, solo nombre & añada abajo.
- * Las otras 2 imágenes se agregarán cuando el cliente las proporcione.
  */
 import { Image } from "astro:assets";
 import cabernetImg from "../assets/images/cabernet-sauvignon.webp";
@@ -11,7 +10,7 @@ import cagreteImg from "../assets/images/Cagrete-blend-2023.png";
 
 const featuredWines = [
     {
-        id: 'malbec',
+        id: 'malbec',  // matches WinesSection id
         name: 'Malbec',
         grapes: 'Malbec 100%',
         vintage: '2023',
@@ -19,7 +18,7 @@ const featuredWines = [
         imageAlt: 'Botella Malbec — Cava Zaragoza medalla Oro Concurso Top 99',
     },
     {
-        id: 'cabernet-sauvignon',
+        id: 'cabernet-sauvignon-grenache',  // matches WinesSection id
         name: 'Cabernet Sauvignon / Grenache',
         grapes: 'Cabernet Sauvignon · Grenache',
         vintage: '2022',
@@ -27,7 +26,7 @@ const featuredWines = [
         imageAlt: 'Botella Cabernet Sauvignon Grenache 2022 — Cava Zaragoza, medalla bronce Concurso Top 99',
     },
     {
-        id: 'cagrete-blend-2023',
+        id: 'mezcla-tintos',  // matches WinesSection id
         name: 'Cagrete Blend',
         grapes: 'Mezcla de tintos',
         vintage: '2023',
@@ -64,7 +63,7 @@ const featuredWines = [
                 const rankLabel = i === 0 ? '1°' : i === 1 ? '2°' : '3°';
                 return (
                 <a
-                    href="/vinos"
+                    href={`/vinos?vino=${wine.id}`}
                     class={`bottle-item reveal reveal-delay-${i + 1} ${rankClass}`}
                     aria-label={`Ver ${wine.name} en nuestra colección`}
                 >
