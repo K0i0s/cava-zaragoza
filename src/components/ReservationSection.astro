@@ -535,7 +535,7 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
         .res-form-panel {
             /* fill the full column height to match the sticky image */
             min-height: 100vh;
-            padding: 5rem 3rem;
+            padding: 5rem 3rem 1rem 3rem;
         }
     }
 
@@ -842,16 +842,10 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
 
 <script>
     // Form submission handler
-    const form = document.getElementById(
-        "reservation-form",
-    ) as HTMLFormElement | null;
-    const submitBtn = document.getElementById(
-        "res-submit",
-    ) as HTMLButtonElement | null;
-    const successEl = document.getElementById(
-        "res-success",
-    ) as HTMLElement | null;
-    const errorEl = document.getElementById("res-error") as HTMLElement | null;
+    const form = document.getElementById("reservation-form");
+    const submitBtn = document.getElementById("res-submit");
+    const successEl = document.getElementById("res-success");
+    const errorEl = document.getElementById("res-error");
 
     if (form && submitBtn) {
         form.addEventListener("submit", async (e) => {
@@ -864,43 +858,49 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
 
             // Optimistic UI: disable button while "sending"
             submitBtn.disabled = true;
-            const originalText = (
-                submitBtn.querySelector(".btn-submit-text") as HTMLElement
-            ).textContent;
-            (
-                submitBtn.querySelector(".btn-submit-text") as HTMLElement
-            ).textContent = "Enviando…";
+            const btnTextSpan = submitBtn.querySelector(".btn-submit-text");
+            const originalText = btnTextSpan
+                ? btnTextSpan.textContent
+                : "Enviar Solicitud";
 
-            successEl && (successEl.hidden = true);
-            errorEl && (errorEl.hidden = true);
+            if (btnTextSpan) {
+                btnTextSpan.textContent = "Enviando…";
+            }
+            if (successEl) {
+                successEl.hidden = true;
+            }
+            if (errorEl) {
+                errorEl.hidden = true;
+            }
 
             try {
                 const data = new FormData(form);
-                const body = {
-                    email: data.get("email"),
-                    name: data.get("name"),
-                    message: data.get("message"),
-                };
+                const name = data.get("name");
+                const email = data.get("email");
+                const message = data.get("message");
 
-                const res = await fetch("/api/reservar", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(body),
-                });
+                const phoneNumber = "526642178375";
 
-                if (res.ok) {
-                    form.reset();
-                    successEl && (successEl.hidden = false);
-                } else {
-                    throw new Error("Server error");
-                }
-            } catch {
-                errorEl && (errorEl.hidden = false);
+                let text = `
+                **Nueva Solicitud de Reservación**\n\n
+                **Nombre:** ${name}\n
+                **Email:** ${email}\n
+                **Mensaje:** ${message}\n
+                `;
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+
+                await new Promise((resolve) => setTimeout(resolve, 800));
+
+                window.open(whatsappUrl, "_blank");
+
+                form.reset();
+                if (successEl) successEl.hidden = false;
+            } catch (err) {
+                console.error("Error al procesar el formulario: ", err);
+                if (errorEl) errorEl.hidden = false;
             } finally {
                 submitBtn.disabled = false;
-                (
-                    submitBtn.querySelector(".btn-submit-text") as HTMLElement
-                ).textContent = originalText ?? "Enviar Solicitud";
+                if (btnTextSpan) btnTextSpan.textContent = originalText;
             }
         });
     }
