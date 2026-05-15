@@ -52,7 +52,7 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
         </div>
 
         <!-- RIGHT: Form panel -->
-        <div class="res-form-panel">
+        <div id="reservation-panel" class="res-form-panel">
             <div class="res-form-inner">
                 <!-- Header -->
                 <header class="res-form-header reveal">
@@ -178,6 +178,57 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                                 autocomplete="name"
                                 required
                             />
+                        </div>
+                    </div>
+
+                    <!-- Interest -->
+                    <div class="field-group">
+                        <label for="res-interest" class="field-label">
+                            Me interesa...
+                        </label>
+                        <div class="field-wrapper">
+                            <svg
+                                class="field-icon"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                            <select
+                                id="res-interest"
+                                name="interest"
+                                class="field-input field-select"
+                                required
+                            >
+                                <option value="" disabled selected hidden>Selecciona una opción</option>
+                                <option value="recorrido">Reservar Recorrido</option>
+                                <option value="cabanias">Reservar Cabañas</option>
+                                <option value="eventos">Agendar Evento</option>
+                                <option value="otros">Otros o Dudas</option>
+                            </select>
+                            <svg
+                                class="field-select-icon"
+                                width="12"
+                                height="12"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M6 9l6 6 6-6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
                         </div>
                     </div>
 
@@ -523,6 +574,7 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
         background-color: var(--color-dark-bg);
         position: relative;
         padding: 5rem 2rem 4rem;
+        scroll-margin-top: 3.5rem;
     }
 
     @media (min-width: 640px) {
@@ -704,6 +756,23 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
         padding-top: 0.8rem;
     }
 
+    .field-select {
+        cursor: pointer;
+        padding-right: 2.6rem;
+    }
+
+    .field-select option {
+        background-color: #120a0c;
+        color: var(--color-cream);
+    }
+
+    .field-select-icon {
+        position: absolute;
+        right: 1.2rem;
+        color: rgba(212, 175, 55, 0.45);
+        pointer-events: none;
+    }
+
     /* ── Submit button ── */
     .btn-submit {
         display: inline-flex;
@@ -877,6 +946,7 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                 const data = new FormData(form);
                 const name = data.get("name");
                 const email = data.get("email");
+                const interest = data.get("interest");
                 const message = data.get("message");
 
                 const phoneNumber = "526642178375";
@@ -885,6 +955,7 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                 **Nueva Solicitud de Reservación**\n\n
                 **Nombre:** ${name}\n
                 **Email:** ${email}\n
+                **Interés:** ${interest}\n
                 **Mensaje:** ${message}\n
                 `;
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
@@ -904,4 +975,32 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
             }
         });
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const params = new URLSearchParams(window.location.search);
+        const service = params.get("service");
+
+        const select = document.getElementById("res-interest");
+        const formPanel = document.getElementById("reservation-panel");
+
+        const validOptions = [
+            "recorrido",
+            "cabanias",
+            "eventos",
+            "otros"
+        ];
+
+        if (service && select && validOptions.includes(service)) {
+            select.value = service;
+        }
+
+        if (!service || !formPanel) return;
+
+        window.requestAnimationFrame(() => {
+            formPanel.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
 </script>
