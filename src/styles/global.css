@@ -213,7 +213,7 @@
         text-decoration: none;
     }
 
-    .btn-primary:hover {
+    .btn-primary:active {
         background-color: var(--color-burgundy-light);
         border-color: var(--color-gold);
         color: var(--color-gold-light);
@@ -237,9 +237,25 @@
         text-decoration: none;
     }
 
-    .btn-outline:hover {
+
+
+    .btn-outline:active {
         border-color: var(--color-gold);
         color: var(--color-gold-light);
         background-color: rgba(212, 175, 55, 0.08);
+    }
+
+    @media (min-width: 768px) {
+        .btn-primary:hover {
+            background-color: var(--color-burgundy-light);
+            border-color: var(--color-gold);
+            color: var(--color-gold-light);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-gold);
+            color: var(--color-gold-light);
+            background-color: rgba(212, 175, 55, 0.08);
+        }
     }
 }

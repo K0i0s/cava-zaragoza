@@ -221,12 +221,22 @@ import { CONTACT_INFO } from "../lib/contact";
         }
     }
 
-    .social-link:hover {
+    .social-link:active {
         border-color: rgba(212, 175, 55, 0.6);
         background: var(--color-burgundy);
         color: var(--color-gold-pale);
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+    }
+
+    @media (min-width: 768px) {
+        .social-link:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            background: var(--color-burgundy);
+            color: var(--color-gold-pale);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+        }
     }
 
     .social-link svg {

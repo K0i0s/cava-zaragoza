@@ -533,10 +533,18 @@ const phoneHref = `tel:${CONTACT_INFO.phone.replace(/[^\d+]/g, "")}`;
             background-color 0.25s ease;
     }
 
-    .social-link:hover {
+    .social-link:active {
         color: var(--color-gold-light);
         border-color: rgba(212, 175, 55, 0.4);
         background-color: rgba(212, 175, 55, 0.05);
+    }
+
+    @media (min-width: 768px) {
+        .social-link:hover {
+            color: var(--color-gold-light);
+            border-color: rgba(212, 175, 55, 0.4);
+            background-color: rgba(212, 175, 55, 0.05);
+        }
     }
 
     /* CTA */

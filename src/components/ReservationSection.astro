@@ -226,53 +226,11 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
 
                     <!-- Submit Buttons -->
                     <div class="form-actions">
-                        <button type="submit" id="res-submit-whatsapp" class="btn-submit btn-submit--whatsapp">
+                        <button type="submit" id="res-submit-whatsapp" class="btn-primary justify-center w-full">
                             <span class="btn-submit-text">Enviar por WhatsApp</span>
-                            <svg
-                                class="btn-submit-icon"
-                                width="15"
-                                height="15"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M22 2L11 13"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M22 2L15 22l-4-9-9-4 20-7z"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
                         </button>
-                        <button type="submit" id="res-submit-email" class="btn-submit btn-submit--email">
+                        <button type="submit" id="res-submit-email" class="btn-outline justify-center w-full">
                             <span class="btn-submit-text">Enviar por Correo</span>
-                            <svg
-                                class="btn-submit-icon"
-                                width="15"
-                                height="15"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M22 2L11 13"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                                <path
-                                    d="M22 2L15 22l-4-9-9-4 20-7z"
-                                    stroke="currentColor"
-                                    stroke-width="1.8"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
                         </button>
                     </div>
 
@@ -731,74 +689,6 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
         pointer-events: none;
     }
 
-    /* ── Submit button ── */
-    .btn-submit {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        padding: 1rem 2rem;
-        background: var(--color-burgundy, #8b1538);
-        border: none;
-        color: var(--color-gold-pale);
-        font-family: var(--font-family-body);
-        font-size: 0.875rem;
-        font-weight: 500;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition:
-            background-color 0.3s ease,
-            transform 0.2s ease,
-            box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        margin-top: 0.25rem;
-    }
-
-    .btn-submit::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            135deg,
-            rgba(212, 175, 55, 0.12) 0%,
-            transparent 60%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .btn-submit:hover {
-        background: var(--color-burgundy-light);
-        border-color: var(--color-gold);
-        color: var(--color-gold-light);
-        transform: translateY(-1px);
-    }
-
-    .btn-submit:hover::before {
-        opacity: 1;
-    }
-
-    .btn-submit:active {
-        transform: translateY(0);
-    }
-
-    .btn-submit:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        transform: none;
-    }
-
-    .btn-submit-icon {
-        transition: transform 0.25s ease;
-    }
-
-    .btn-submit:hover .btn-submit-icon {
-        transform: translateX(3px) translateY(-2px);
-    }
-
     /* ── Feedback messages ── */
     .form-feedback {
         display: flex;
@@ -855,6 +745,8 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
 
 <script>
     const form = document.getElementById("reservation-form");
+
+    form.addEventListener("submit", (e) => e.preventDefault());
 
     const whatsappBtn = document.getElementById("res-submit-whatsapp");
     const emailBtn = document.getElementById("res-submit-email");
@@ -946,7 +838,9 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                     `?subject=${encodeURIComponent(subject)}` +
                     `&body=${encodeURIComponent(body)}`;
 
-                window.location.href = mailtoUrl;
+                const link = document.createElement('a');
+                link.href = mailtoUrl;
+                link.click();
 
                 if (successEl) successEl.hidden = false;
             } catch (err) {
