@@ -1,0 +1,239 @@
+---
+/**
+ * SocialsSection — Redes Sociales.
+ * Ahora muestra enlaces a redes sociales siguiendo el diseño establecido.
+ */
+
+import { CONTACT_INFO } from "../lib/contact";
+---
+
+<section
+    id="redes-sociales"
+    aria-label="Conecta con nuestras redes sociales"
+    class="social-section"
+>
+    <!-- Decorative gold line top -->
+    <div class="top-line" aria-hidden="true"></div>
+
+    <div class="social-inner">
+        <!-- Left ornament -->
+        <div class="ornament" aria-hidden="true">
+            <div class="ornament-line"></div>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                    d="M8 1L9.2 6.2L14.5 8L9.2 9.8L8 15L6.8 9.8L1.5 8L6.8 6.2z"
+                    fill="var(--color-gold)"
+                    opacity="0.7"></path>
+            </svg>
+            <div class="ornament-line"></div>
+        </div>
+
+        <!-- Text block -->
+        <div class="social-text">
+            <p class="social-label section-label">Comunidad</p>
+            <h2 class="social-title">
+                Conecta con<em class="social-accent"> la Cava</em>
+            </h2>
+            <p class="social-sub">
+                Únete a nuestra comunidad, descubre nuevas cosechas y comparte tu pasión por el vino con nosotros.
+            </p>
+        </div>
+
+        <!-- Social Networks -->
+        <div class="social-networks">
+            <a href={CONTACT_INFO.socials.instagram} class="social-link" aria-label="Instagram">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>Instagram</span>
+            </a>
+            <a href={CONTACT_INFO.socials.facebook} class="social-link" aria-label="Facebook">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+                <span>Facebook</span>
+            </a>
+            <a href={CONTACT_INFO.socials.tiktok} class="social-link" aria-label="TikTok">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.29 6.29 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.78a4.85 4.85 0 0 1-1.07-.09z"
+                        stroke="currentColor"
+                        stroke-width="1.4"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </svg>
+                <span>TikTok</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Decorative gold line bottom -->
+    <div class="bottom-line" aria-hidden="true"></div>
+</section>
+
+<style>
+    /* ── Section ── */
+    .social-section {
+        position: relative;
+        background: var(--color-charcoal-soft);
+        overflow: hidden;
+    }
+
+    /* Background texture */
+    .social-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+            0deg,
+            rgba(212, 175, 55, 0.025) 0px,
+            rgba(212, 175, 55, 0.025) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+        pointer-events: none;
+    }
+
+    .top-line,
+    .bottom-line {
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(212, 175, 55, 0.3),
+            transparent
+        );
+    }
+
+    /* ── Inner layout ── */
+    .social-inner {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 4.5rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2.5rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: 1024px) {
+        .social-inner {
+            padding: 5rem 2rem;
+        }
+    }
+
+    /* ── Ornament ── */
+    .ornament {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .ornament-line {
+        width: 3rem;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(212, 175, 55, 0.5)
+        );
+    }
+
+    .ornament-line:last-child {
+        background: linear-gradient(
+            to left,
+            transparent,
+            rgba(212, 175, 55, 0.5)
+        );
+    }
+
+    /* ── Text ── */
+    .social-label {
+        margin-bottom: 0.5rem;
+    }
+
+    .social-title {
+        font-family: var(--font-family-display);
+        font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+        font-weight: 700;
+        color: var(--color-cream);
+        line-height: 1.2;
+        margin: 0 0 0.6rem;
+    }
+
+    .social-accent {
+        font-style: italic;
+        color: var(--color-gold);
+    }
+
+    .social-sub {
+        font-family: var(--font-family-body);
+        font-size: 0.925rem;
+        color: rgba(245, 245, 220, 0.5);
+        font-weight: 300;
+        max-width: 30rem;
+        line-height: 1.65;
+        margin: 0 auto;
+    }
+
+    /* ── Social Networks ── */
+    .social-networks {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.25rem;
+        margin-top: 0.5rem;
+        width: 100%;
+        max-width: 48rem;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.85rem 1.5rem;
+        background: rgba(18, 10, 12, 0.6);
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        color: var(--color-cream);
+        font-family: var(--font-family-body);
+        font-size: 0.95rem;
+        font-weight: 400;
+        text-decoration: none;
+        transition:
+            border-color 0.3s ease,
+            background 0.3s ease,
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
+        flex: 1 1 calc(50% - 1.25rem);
+        max-width: 200px;
+        justify-content: center;
+    }
+
+    @media (max-width: 480px) {
+        .social-link {
+            flex: 1 1 100%;
+            max-width: 100%;
+        }
+    }
+
+    .social-link:hover {
+        border-color: rgba(212, 175, 55, 0.6);
+        background: var(--color-burgundy);
+        color: var(--color-gold-pale);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+    }
+
+    .social-link svg {
+        transition: transform 0.2s ease;
+    }
+
+    .social-link:hover svg {
+        transform: scale(1.1);
+    }
+</style>

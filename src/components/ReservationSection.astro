@@ -102,47 +102,6 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                     class="res-form reveal reveal-delay-2"
                     novalidate
                 >
-                    <!-- Email -->
-                    <div class="field-group">
-                        <label for="res-email" class="field-label">
-                            Correo electrónico
-                        </label>
-                        <div class="field-wrapper">
-                            <svg
-                                class="field-icon"
-                                width="15"
-                                height="15"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                            >
-                                <rect
-                                    x="2"
-                                    y="4"
-                                    width="20"
-                                    height="16"
-                                    rx="2"
-                                    stroke="currentColor"
-                                    stroke-width="1.7"></rect>
-                                <path
-                                    d="M2 7l10 7L22 7"
-                                    stroke="currentColor"
-                                    stroke-width="1.7"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"></path>
-                            </svg>
-                            <input
-                                type="email"
-                                id="res-email"
-                                name="email"
-                                class="field-input"
-                                placeholder="tu@correo.com"
-                                autocomplete="email"
-                                required
-                            />
-                        </div>
-                    </div>
-
                     <!-- Name -->
                     <div class="field-group">
                         <label for="res-name" class="field-label">
@@ -265,31 +224,57 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                         </div>
                     </div>
 
-                    <!-- Submit -->
-                    <button type="submit" id="res-submit" class="btn-submit">
-                        <span class="btn-submit-text">Enviar Solicitud</span>
-                        <svg
-                            class="btn-submit-icon"
-                            width="15"
-                            height="15"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            aria-hidden="true"
-                        >
-                            <path
-                                d="M22 2L11 13"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"></path>
-                            <path
-                                d="M22 2L15 22l-4-9-9-4 20-7z"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"></path>
-                        </svg>
-                    </button>
+                    <!-- Submit Buttons -->
+                    <div class="form-actions">
+                        <button type="submit" id="res-submit-whatsapp" class="btn-submit btn-submit--whatsapp">
+                            <span class="btn-submit-text">Enviar por WhatsApp</span>
+                            <svg
+                                class="btn-submit-icon"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M22 2L11 13"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M22 2L15 22l-4-9-9-4 20-7z"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <button type="submit" id="res-submit-email" class="btn-submit btn-submit--email">
+                            <span class="btn-submit-text">Enviar por Correo</span>
+                            <svg
+                                class="btn-submit-icon"
+                                width="15"
+                                height="15"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M22 2L11 13"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path
+                                    d="M22 2L15 22l-4-9-9-4 20-7z"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                    </div>
 
                     <!-- Success / Error messages -->
                     <div
@@ -356,33 +341,6 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
                         directamente.
                     </div>
                 </form>
-
-                <!-- Policy note -->
-                <p class="res-policy reveal reveal-delay-3">
-                    <svg
-                        width="11"
-                        height="11"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                    >
-                        <rect
-                            x="3"
-                            y="11"
-                            width="18"
-                            height="11"
-                            rx="2"
-                            stroke="currentColor"
-                            stroke-width="1.8"></rect>
-                        <path
-                            d="M7 11V7a5 5 0 0 1 10 0v4"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"></path>
-                    </svg>
-                    Visitas exclusivamente con reservación &nbsp;·&nbsp; Bebe con
-                    moderación
-                </p>
             </div><!-- /.res-form-inner -->
         </div>
     </div>
@@ -778,16 +736,16 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.6rem;
+        gap: 0.5rem;
         width: 100%;
         padding: 1rem 2rem;
         background: var(--color-burgundy, #8b1538);
         border: none;
-        color: rgba(245, 245, 220, 0.92);
+        color: var(--color-gold-pale);
         font-family: var(--font-family-body);
-        font-size: 0.72rem;
-        font-weight: 700;
-        letter-spacing: 0.22em;
+        font-size: 0.875rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         cursor: pointer;
         transition:
@@ -813,8 +771,9 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
     }
 
     .btn-submit:hover {
-        background: #9e1a42;
-        box-shadow: 0 8px 32px rgba(139, 21, 56, 0.4);
+        background: var(--color-burgundy-light);
+        border-color: var(--color-gold);
+        color: var(--color-gold-light);
         transform: translateY(-1px);
     }
 
@@ -869,21 +828,6 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
         background: rgba(200, 80, 80, 0.05);
     }
 
-    /* ── Policy note ── */
-    .res-policy {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        font-family: var(--font-family-body);
-        font-size: 0.62rem;
-        font-weight: 500;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(245, 245, 220, 0.2);
-        margin-top: 1.25rem;
-        flex-wrap: wrap;
-    }
-
     /* ── Reveal animations (shared with Layout) ── */
     .reveal {
         opacity: 0;
@@ -910,72 +854,108 @@ import reservacionImg from "../assets/images/reservacion_imagen.webp";
 </style>
 
 <script>
-    // Form submission handler
     const form = document.getElementById("reservation-form");
-    const submitBtn = document.getElementById("res-submit");
+
+    const whatsappBtn = document.getElementById("res-submit-whatsapp");
+    const emailBtn = document.getElementById("res-submit-email");
+
     const successEl = document.getElementById("res-success");
     const errorEl = document.getElementById("res-error");
 
-    if (form && submitBtn) {
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
+    function getFormData() {
+        const data = new FormData(form);
 
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
+        return {
+            name: data.get("name"),
+            interest: data.get("interest"),
+            message: data.get("message"),
+        };
+    }
 
-            // Optimistic UI: disable button while "sending"
-            submitBtn.disabled = true;
-            const btnTextSpan = submitBtn.querySelector(".btn-submit-text");
-            const originalText = btnTextSpan
-                ? btnTextSpan.textContent
-                : "Enviar Solicitud";
+    function validateForm() {
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return false;
+        }
 
-            if (btnTextSpan) {
-                btnTextSpan.textContent = "Enviando…";
-            }
-            if (successEl) {
-                successEl.hidden = true;
-            }
-            if (errorEl) {
-                errorEl.hidden = true;
-            }
+        if (successEl) successEl.hidden = true;
+        if (errorEl) errorEl.hidden = true;
+
+        return true;
+    }
+
+    // =========================
+    // WhatsApp
+    // =========================
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener("click", () => {
+            if (!validateForm()) return;
 
             try {
-                const data = new FormData(form);
-                const name = data.get("name");
-                const email = data.get("email");
-                const interest = data.get("interest");
-                const message = data.get("message");
+                const { name, interest, message } = getFormData();
 
                 const phoneNumber = "526642178375";
 
-                let text = `
-                **Nueva Solicitud de Reservación**\n\n
-                **Nombre:** ${name}\n
-                **Email:** ${email}\n
-                **Interés:** ${interest}\n
-                **Mensaje:** ${message}\n
-                `;
-                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+                const text = `
+    *Nueva Solicitud de Reservación*
 
-                await new Promise((resolve) => setTimeout(resolve, 800));
+    *Nombre:* ${name}
+    *Interés:* ${interest}
+    *Mensaje:* ${message}
+                `;
+
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
 
                 window.open(whatsappUrl, "_blank");
 
-                form.reset();
                 if (successEl) successEl.hidden = false;
             } catch (err) {
-                console.error("Error al procesar el formulario: ", err);
+                console.error(err);
+
                 if (errorEl) errorEl.hidden = false;
-            } finally {
-                submitBtn.disabled = false;
-                if (btnTextSpan) btnTextSpan.textContent = originalText;
             }
         });
     }
 
+    // =========================
+    // Email
+    // =========================
+    if (emailBtn) {
+        emailBtn.addEventListener("click", () => {
+            if (!validateForm()) return;
+
+            try {
+                const { name, interest, message } = getFormData();
+
+                const email = "reservaciones@cavazaragoza.com.mx";
+
+                const subject = `Nueva Solicitud - ${interest}`;
+
+                const body = `
+    Nueva Solicitud de Reservación
+
+    Nombre: ${name}
+    Interés: ${interest}
+
+    Mensaje:
+    ${message}
+                `;
+
+                const mailtoUrl =
+                    `mailto:${email}` +
+                    `?subject=${encodeURIComponent(subject)}` +
+                    `&body=${encodeURIComponent(body)}`;
+
+                window.location.href = mailtoUrl;
+
+                if (successEl) successEl.hidden = false;
+            } catch (err) {
+                console.error(err);
+
+                if (errorEl) errorEl.hidden = false;
+            }
+        });
+    }
     document.addEventListener("DOMContentLoaded", () => {
         const params = new URLSearchParams(window.location.search);
         const service = params.get("service");

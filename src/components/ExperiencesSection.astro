@@ -190,17 +190,19 @@ const experiences = [
 
     /* Badge */
     .experience-badge {
+        font-family: var(--font-family-display);
+        font-style: italic;
+        font-size: 0.65rem;
         position: absolute;
         top: 2rem;
         right: 0;
         background: var(--color-gold);
-        color: var(--color-dark-bg);
-        font-size: 0.65rem;
+        color: #000;
         font-weight: 800;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
         padding: 0.5rem 1rem;
         z-index: 5;
-        text-transform: uppercase;
+        text-transform: capitalize;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
@@ -215,7 +217,6 @@ const experiences = [
     }
 
     .experience-tagline {
-        font-family: var(--font-family-display);
         font-size: 0.75rem;
         font-weight: 700;
         letter-spacing: 0.15em;
