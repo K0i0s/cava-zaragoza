@@ -1,0 +1,84 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import heroDesktop from "../assets/images/hero_image_desktop_2.webp";
+---
+
+<Layout
+    title="404 | Cava Zaragoza — Valle de Guadalupe"
+    description="404 | Cava Zaragoza — Valle de Guadalupe"
+    url="https://cavazaragoza.com.mx/404"
+>
+    <Navbar />
+    <main id="404-main">
+        <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0 w-full h-full">
+                <Image
+                    src={heroDesktop}
+                    alt="Cava Zaragoza - Error 404: Página no encontrada"
+                    loading="eager"
+                    fetchpriority="high"
+                    class="absolute inset-0 w-full h-full object-cover object-center"
+                />
+            </div>
+
+            <!-- Layered Overlays -->
+            <div
+                class="absolute inset-0 z-10"
+                style="background: linear-gradient(to bottom, rgba(18,10,12,0.4) 0%, rgba(18,10,12,0.2) 40%, rgba(18,10,12,0.7) 80%, rgba(18,10,12,0.95) 100%);"
+            >
+            </div>
+            <div
+                class="absolute inset-0 z-10"
+                style="background: radial-gradient(ellipse at center, transparent 40%, rgba(18,10,12,0.5) 100%);"
+            >
+            </div>
+
+            <!-- Content -->
+            <div class="relative z-20 text-center px-6 sm:px-8 max-w-3xl mx-auto pt-24 pb-20">
+                
+                <!-- Label -->
+                <div class="flex items-center justify-center gap-4 mb-6 animate-fade-in" style="animation-delay: 0.2s;">
+                    <div style="height: 1px; width: 2.5rem; background: var(--color-gold); opacity: 0.5;"></div>
+                    <p class="section-label m-0">ERROR 404</p>
+                    <div style="height: 1px; width: 2.5rem; background: var(--color-gold); opacity: 0.5;"></div>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-5xl md:text-6xl text-cream mb-6 leading-tight animate-fade-up font-normal" style="font-family: var(--font-family-display); animation-delay: 0.4s;">
+                    Cosecha
+                    <span class="text-gold italic block mt-2 text-6xl md:text-7xl">No Encontrada</span>
+                </h1>
+
+                <!-- Subheadline -->
+                <p class="text-sm md:text-base text-cream/80 max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-up font-light" style="font-family: var(--font-family-body); animation-delay: 0.5s;">
+                    Incluso en la niebla del Valle, siempre hay un camino de regreso.
+                    Permítanos guiarle de vuelta a la experiencia Zaragoza.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up" style="animation-delay: 0.7s;">
+                    <a href="/" class="btn-outline min-w-[295px] sm:min-w-fit justify-center text-center">
+                        REGRESAR AL INICIO
+                    </a>
+                    <a href="/reservar" class="btn-primary min-w-[295px] sm:min-w-fit justify-center text-center">
+                        RESERVAR
+                    </a>
+                </div>
+
+                <!-- Bottom Ornament -->
+                <div class="mt-16 flex items-center justify-center gap-4 animate-fade-in" style="animation-delay: 0.9s;">
+                    <div style="height: 1px; width: 4rem; background: linear-gradient(to right, transparent, var(--color-gold)); opacity: 0.4;"></div>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" style="opacity: 0.6;">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#D4AF37"></path>
+                    </svg>
+                    <div style="height: 1px; width: 4rem; background: linear-gradient(to left, transparent, var(--color-gold)); opacity: 0.4;"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</Layout>
